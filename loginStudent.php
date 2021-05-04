@@ -1,18 +1,27 @@
 <?php
+/*ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);*/
 
+date_default_timezone_set('Europe/Bratislava');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once("Database.php");
 
     $conn = (new Database())->createConnection();
-    $stm = $conn->prepare("INSERT INTO student (id, name, surname, status, time) VALUES (?, ?, ?, ?, ?)");
 
-    $stm->execute([$_POST['id_num'], $_POST['name'], $_POST['surname'], "Start", date('Y-m-d H:i:s', time())]);
+    $statement = $conn->prepare("SELECT id FROM tests WHERE code=?");
+    $statement->execute([$_POST["code"]]);
+    $test_id = $statement->fetch(PDO::FETCH_ASSOC);
+
+    $s = $conn->prepare("INSERT INTO test_logs (test_id, student_id, start) VALUES (?, ?, ?)");
+    $s->execute([$test_id['id'], $_POST['id_num'], date('Y-m-d H:i:s', time())]);
+
+    $stm = $conn->prepare("INSERT INTO student (id, name, surname) VALUES (?, ?, ?)");
+    $stm->execute([$_POST['id_num'], $_POST['name'], $_POST['surname']]);
 
     $_SESSION['name'] = $_POST["name"];
     $_SESSION['surname'] = $_POST["surname"];
     $_SESSION['id'] = $_POST["id_num"];
-
-
 
     header("Location: tests/" . $_POST["code"] . ".php");
 }

@@ -5,7 +5,7 @@ error_reporting(E_ALL);*/
 
 date_default_timezone_set('Europe/Bratislava');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require_once("Database.php");
+    require_once(__DIR__ . "/classes/helpers/Database.php");
 
     $conn = (new Database())->createConnection();
 
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <a href="temp.php">Študent</a> | <a href="loginProfessor.php">Učiteľ</a>
+    <a href="loginStudent.php">Študent</a> | <a href="loginProfessor.php">Učiteľ</a>
     <form action="#" method="post">
         <div class="container">
             <label for="code"><b>Kód testu</b></label>

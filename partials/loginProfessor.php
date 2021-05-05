@@ -28,7 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <form action="loginProfessor.php" method="post">
     <div class="row mb-2">
-        <a href="loginStudent.php">Študent</a> | <a href="loginProfessor.php">Učiteľ</a>
+        <div class=" d-flex justify-content-center">
+            <div class="p-2"><a href="index.php">Študent</a></div>
+            <div class="p-2"><a href="index.php?role=professor">Učiteľ</a></div>
+        </div>
     </div>
     <div class="container">
         <div class="row mb-2">
@@ -55,6 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     <div class="row mb-2">
-        <p>ak nie ste zaregistrovaný, registrujte sa na odkaze: <a href="../registration.php">Registrácia</a></p>
+        <p>ak nie ste zaregistrovaný, registrujte sa na odkaze: <a href="registration.php">Registrácia</a></p>
     </div>
 </form>

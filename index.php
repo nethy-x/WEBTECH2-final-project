@@ -11,6 +11,7 @@
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     <link href="css/custom-style/index-style.css" rel="stylesheet">
 

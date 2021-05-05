@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" class="registerbtn" id="rgstr">Registrovať</button>
         </div>
     </form>
-    <p>Máte už vytvorený účet? <a href="partials/loginProfessor.php" class="register">Prihlásenie</a></p>
+    <p>Máte už vytvorený účet? <a href="index.php" class="register">Prihlásenie</a></p>
     <script>
     var reg = document.getElementById('rgstr');
     reg.onclick = function() {

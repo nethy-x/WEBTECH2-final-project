@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <a href="loginStudent.php">Študent</a> | <a href="loginProfessor.php">Učiteľ</a>
+    <a href="temp.php">Študent</a> | <a href="loginProfessor.php">Učiteľ</a>
     <form action="#" method="post">
         <div class="container">
             <label for="code"><b>Kód testu</b></label>

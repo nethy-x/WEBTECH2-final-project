@@ -5,8 +5,9 @@
     <meta name="description" content="">
     <title>Home</title>
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" >
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -17,7 +18,7 @@
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="#">Sign out</a>
-        </li>
+        </li>z
     </ul>
 </header>
 <div id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">

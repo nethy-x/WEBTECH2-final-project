@@ -1,6 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "xkacmarm";
-$password = 'Vvn#$iA3fHVkt8';
-
+const DB_HOST = 'localhost';
+const DB_USER = 'xlapcak';
+const DB_PASS = 'Koniecstringuje\0';
+const DB_NAME = 'userDB';
 ?> 

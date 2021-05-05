@@ -7,7 +7,6 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>

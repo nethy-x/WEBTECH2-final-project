@@ -16,17 +16,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($user)) {
             if (password_verify($_POST["psw"], $user["password"])) {
                 $_SESSION['username'] = $user['email'];
-                header("location: professor.php");
+                header("location: student_home.php");
             } else {
-                echo 'Nesprávne heslo.';
+                header("location: index.php?role=professor&loginError=2");
+                die();
+//                echo 'Nesprávne heslo.';
             }
         } else {
-            echo "Učiteľ nebol nájdený.";
+            header("Location: index.php?role=professor&loginError=1");
+            die();
+//            echo "Učiteľ nebol nájdený.";
         }
     }
 }
 ?>
-<form action="loginProfessor.php" method="post">
+<form action="index.php?role=professor" method="post">
     <div class="row mb-2">
         <div class=" d-flex justify-content-center">
             <div class="p-2"><a href="index.php">Študent</a></div>
@@ -58,6 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     <div class="row mb-2">
-        <p>ak nie ste zaregistrovaný, registrujte sa na odkaze: <a href="registration.php">Registrácia</a></p>
+        <p>Ak nie ste zaregistrovaný, registrujte sa na odkaze: <a href="registration.php">Registrácia</a></p>
     </div>
 </form>

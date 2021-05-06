@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <form action="#" method="post">
     <div class="row mb-2">
-        <div class=" d-flex justify-content-center">
+        <div class="d-flex justify-content-center">
             <div class="p-2"><a href="index.php">Študent</a></div>
             <div class="p-2"><a href="index.php?role=professor">Učiteľ</a></div>
         </div>
@@ -46,16 +46,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div id="login" style="display: none;">
             <div class="row mb-2">
-                <label for="name"><b>Meno</b></label>
-                <input type="text" id="name" placeholder="Vložte meno" name="name" required>
+                <div class="form-group col">
+                    <label for="name"><b>Meno</b></label>
+                </div>
+                <div class="form-group col">
+                    <input type="text" id="name" placeholder="Vložte meno" name="name" required>
+                </div>
             </div>
             <div class="row mb-2">
-                <label for="surname"><b>Priezvisko</b></label>
-                <input type="text" id="surname" placeholder="Vložte priezvisko" name="surname" required>
+                <div class="form-group col">
+                    <label for="surname"><b>Priezvisko</b></label>
+                </div>
+                <div class="form-group col">
+                    <input type="text" id="surname" placeholder="Vložte priezvisko" name="surname" required>
+                </div>
             </div>
             <div class="row mb-2">
-                <label for="id_num"><b>Identifikačné číslo</b></label>
-                <input type="number" id="id_num" placeholder="Vložte identifikačné číslo" name="id_num" required>
+                <div class="form-group col">
+                    <label for="id_num"><b>Identifikačné číslo</b></label>
+                </div>
+                <div class="form-group col">
+                    <input type="number" id="id_num" placeholder="Vložte identifikačné číslo" name="id_num" required>
+                </div>
             </div>
             <div class="row mb-2">
                 <button type="submit" class="btn btn-secondary mt-3">Prihlásiť sa</button>
@@ -69,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         var code = document.getElementById("code");
         e.preventDefault();
         $.ajax({
-            url: "https://wt69.fei.stuba.sk/test123/validate.php",
+            url: "validate.php",
             type: "get",
             data: {
                 code: code.value

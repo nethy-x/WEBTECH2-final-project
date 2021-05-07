@@ -84,9 +84,11 @@
                     </div>
                     <div>
                         <h2>question4</h2>
+                        <?php include "otazka/question_4.php"?>
                     </div>
                     <div>
                         <h2>question5</h2>
+                        <?php include "otazka/question_5.php"?>
                     </div>
                 </form>
             </div>

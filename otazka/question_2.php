@@ -19,8 +19,8 @@
 
     <label for="submit-question"></label>
 
-    <button disabled name="submit-question" id="submit-question" >Submit</button>
+    <input  type="button" name="submit-question" id="submit-question" value="Submit" >
 
 </form>
-<script src="script/script.js"></script>
+<script src="script/question_2_script.js"></script>
 <?php

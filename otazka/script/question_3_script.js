@@ -7,7 +7,7 @@ cnt_answers.addEventListener("change",function (){
     let target = document.getElementById("target3");
     target.innerHTML = "";
     for(let i =0; i < cnt; i++){
-        let source = "<label for="+i+"_answer"+"></label>"+"<input type='text' class='answer3' id='"+i+"_answer"+"'/></label>"+
+        let source = "<label for="+i+"_answer"+"></label>"+"<input type='text' class='answer3' id='"+i+"_answer3"+"'/></label>"+
             "<label for="+i+"_answer3_match"+" ></label>"+"<input type='text' class='answer3_match' id='"+i+"_answer3_match"+"'/></label>" + "<br>";
 
         target.innerHTML = target.innerHTML + source ;

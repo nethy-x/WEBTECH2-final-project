@@ -7,8 +7,8 @@ cnt_answers.addEventListener("change",function (){
     let target = document.getElementById("target");
     target.innerHTML = "";
     for(let i =0; i < cnt; i++){
-        let source =    "<label for="+i+"_question"+"></label>"+"<input type='text' class='answer' id='"+i+"_answer"+"'/></label>"+
-                        "<label for="+i+"_correct"+" ></label>"+"<input type='radio' class='correct' id='"+i+"_correct"+"'/></label>";
+        let source =    "<label for="+i+"_question"+"></label>"+"<input type='text' class='answer2' id='"+i+"_answer2"+"'/></label>"+
+                        "<label for="+i+"_correct"+" ></label>"+"<input type='radio' class='answer2_match' id='"+i+"_answer2_match"+"'/></label>";
 
         target.innerHTML = target.innerHTML + source ;
     }
@@ -24,8 +24,8 @@ cnt_answers.addEventListener("change",function (){
 })
 
 submit.addEventListener("click",function (){
-    let answers = document.getElementsByClassName("answer");
-    let correct_answer_element = document.getElementsByClassName("correct");
+    let answers = document.getElementsByClassName("answer2");
+    let correct_answer_element = document.getElementsByClassName("answer2_match");
 
     let correct_answer = [];
     let incorrect_answer =[];
@@ -42,4 +42,5 @@ submit.addEventListener("click",function (){
     });
 
     let Json = {"question_type":"question_2","question":question.value,"correct":correct_answer,"incorrect":incorrect_answer};
+    console.log(Json)
 })

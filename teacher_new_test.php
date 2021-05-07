@@ -67,11 +67,12 @@
                 <label for="create-test"></label>
                 <input type="button" id="create-test" class="btn btn-primary" value="create new test" >
             </div>
-            
+            <div id="target">
+
+            </div>
         </main>
     </div>
 </div>
 </body>
-
-
+<script src="script/create_test.js"></script>
 </html>

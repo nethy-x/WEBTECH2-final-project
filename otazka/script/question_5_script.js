@@ -10,5 +10,6 @@ submit5.addEventListener("click",function (){
     let Json5 = {"question_type":"question_5","question":question5.value,"answer":answer5};
     console.log(Json5);
 
+
 })
 

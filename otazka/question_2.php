@@ -1,6 +1,6 @@
 <?php
  echo ' <div class="col-md-4">  <label class="form-label" for="question" ></label>
-    <input class="form-control" l id="question" type="text">
+    <input class="form-control" id="question" type="text">
 
     <label class="form-label" for="cnt-answers2"></label>
         <select class="form-control" id="cnt-answers2">

@@ -1,9 +1,9 @@
-<form>
-    <label for="question3" ></label>
-    <input id="question3" type="text">
+<?php
+  echo ' <div class="col-md-4">  <label class="form-label" for="question3" ></label>
+    <input class="form-control" id="question3" type="text">
 
-    <label for="cnt-answers3"></label>
-    <select id="cnt-answers3">
+    <label class="form-label" for="cnt-answers3"></label>
+    <select class="form-control" id="cnt-answers3">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -18,9 +18,10 @@
     </div>
 
     <label for="submit-question3"></label>
-    <button id="submit-question3" name="submit-question3" >Submit</button>
+    <button id="submit-question3" name="submit-question3" class="btn btn-dark" >Submit</button></div>
 
 
-</form>
-<script src="script/question_3_script.js"></script>
-<?php
+
+<script src="otazka/script/question_3_script.js"></script>
+'
+?>

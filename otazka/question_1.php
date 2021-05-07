@@ -1,5 +1,4 @@
-<form>
-    <label for="question1" ></label>
+<?php echo '<label for="question1" ></label>
     <input id="question1" type="text">
 
     <label for="cnt-answers1"></label>
@@ -21,6 +20,6 @@
     <button id="submit-question1" name="submit-question1" >Submit</button>
 
 
-</form>
-<script src="script/question_1_script.js"></script>
-<?php
+
+<script src="otazka/script/question_1_script.js"></script>'
+?>

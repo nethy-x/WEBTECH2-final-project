@@ -67,8 +67,27 @@
                 <label for="create-test"></label>
                 <input type="button" id="create-test" class="btn btn-primary" value="create new test" >
             </div>
-            <div id="target">
-
+            <div id="target" style="display: none">
+                <form>
+                    <div>
+                        <h2>question1</h2>
+                        <?php include "otazka/question_1.php"?>
+                    </div>
+                    <div>
+                        <h2>question2</h2>
+                        <?php include "otazka/question_2.php"?>
+                    </div>
+                    <div>
+                        <h2>question3</h2>
+                        <?php include "otazka/question_3.php"?>
+                    </div>
+                    <div>
+                        <h2>question4</h2>
+                    </div>
+                    <div>
+                        <h2>question5</h2>
+                    </div>
+                </form>
             </div>
         </main>
     </div>

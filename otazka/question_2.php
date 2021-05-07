@@ -21,11 +21,8 @@
 
     <label for="submit-question"></label>
 
-<<<<<<< HEAD
-    <input  type="button" name="submit-question" id="submit-question" value="Submit" >
-=======
     <input  type="button" name="submit-question" id="submit-question" class="btn btn-dark" value="Submit" ></div>
->>>>>>> 75419998ca8e6da5bdf317279d49826d7fddbdc2
+
 
 
 <script src="otazka/script/question_2_script.js"></script> '

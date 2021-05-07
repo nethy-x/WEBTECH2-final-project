@@ -47,8 +47,8 @@ submit2.addEventListener("click",function (){
 
 function f (value, target){
     for(let i =0; i < value; i++){
-        let source =    "<label for="+i+"_question"+"></label>"+"<input type='text' class='answer2' id='"+i+"_answer2"+"'/></label>"+
-            "<label for="+i+"_correct"+" ></label>"+"<input type='radio' class='answer2_match' id='"+i+"_answer2_match"+"'/></label>";
+        let source =    "<div class='d-flex align-items-center'> <label for="+i+"_question"+"></label>"+"<input type='text' class='form-control answer2' id='"+i+"_answer2"+"'/></label>"+
+            "<label for="+i+"_correct"+" ></label>"+"<input type='radio' class='m-lg-4 answer2_match' id='"+i+"_answer2_match"+"'/></label></div>";
 
         target.innerHTML = target.innerHTML + source ;
     }

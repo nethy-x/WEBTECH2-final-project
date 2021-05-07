@@ -31,7 +31,18 @@
     <div class="row">
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="flex-row d-flex justify-content-center">
-                <?php include __DIR__ . "/partials/page-login.php"?>
+                <?php
+                session_start();
+                if (isset($_SESSION['role'])) {
+                    if(strcmp($_SESSION['role'],"student") == 0){
+                        header("Location: student_home.php");
+                    }else if(strcmp($_SESSION['role'],"professor") == 0){
+                        header("Location: teacher_home.php");
+                    }
+                } else {
+                    include __DIR__ . "/partials/page-login.php";
+                }
+                ?>
             </div>
         </main>
     </div>

@@ -15,17 +15,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (!empty($user)) {
             if (password_verify($_POST["psw"], $user["password"])) {
+                session_start();
                 $_SESSION['username'] = $user['email'];
-                header("location: student_home.php");
+                $_SESSION['role'] = "professor";
+                header("location: teacher_home.php");
             } else {
                 header("location: index.php?role=professor&loginError=2");
-                die();
-//                echo 'Nesprávne heslo.';
             }
         } else {
             header("Location: index.php?role=professor&loginError=1");
-            die();
-//            echo "Učiteľ nebol nájdený.";
         }
     }
 }

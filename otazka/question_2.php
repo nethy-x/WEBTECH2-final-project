@@ -19,10 +19,10 @@
 
     </div>
 
-    <label for="submit-question"></label>
+   
 
-    <input  type="button" name="submit-question" id="submit-question" class="btn btn-dark" value="Submit" ></div>
-
+    </div>
+  
 
 
 <script src="otazka/script/question_2_script.js"></script> '

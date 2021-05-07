@@ -4,10 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom-style/new-test.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
-    <script src="js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.bundle.min.js" ></script>
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -67,11 +68,33 @@
                 <label for="create-test"></label>
                 <input type="button" id="create-test" class="btn btn-primary" value="create new test" >
             </div>
-            
+            <div id="target" style="display: none">
+                <form>
+                    <div>
+                        <h2>question1</h2>
+                        <?php include "otazka/question_1.php"?>
+                    </div>
+                    <div>
+                        <h2>question2</h2>
+                        <?php include "otazka/question_2.php"?>
+                    </div>
+                    <div>
+                        <h2>question3</h2>
+                        <?php include "otazka/question_3.php"?>
+                    </div>
+                    <div>
+                        <h2>question4</h2>
+                        <?php include "otazka/question_4.php"?>
+                    </div>
+                    <div>
+                        <h2>question5</h2>
+                        <?php include "otazka/question_5.php"?>
+                    </div>
+                </form>
+            </div>
         </main>
     </div>
 </div>
 </body>
-
-
+<script src="script/create_test.js"></script>
 </html>

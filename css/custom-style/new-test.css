@@ -1,0 +1,25 @@
+.form-control{
+    border: 1px solid #252529;
+}
+math-field {
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin: 10px 0 10px 0;
+    border-radius: 5px;
+    background-color: #fff;
+}
+body{
+    margin-bottom: 500px;
+}
+#output {
+    padding: 5px;
+    margin: 200px 0 10px 0;
+    border-radius: 5px;
+    border: 1px solid #000;
+
+    font-family: 'Source Code Pro', Menlo,
+    'Bitstream Vera Sans Mono', Monaco, Courier, 'Andale Mono',
+    monospace;
+    color: #f0c674;
+    background: #35434e;
+}

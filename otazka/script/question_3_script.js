@@ -6,8 +6,13 @@ let value3 = cnt_answers3.value;
 let target3 = document.getElementById("target3");
 
 for(let i =0; i < value3; i++){
+<<<<<<< HEAD
     let source = "<label for="+i+"_answer"+"></label>"+"<input type='text' class='answer3' id='"+i+"_answer3"+"'/></label>"+
         "<label for="+i+"_answer3_match"+" ></label>"+"<input type='text' class='answer3_match' id='"+i+"_answer3_match"+"'/></label>" + "<br>";
+=======
+    let source = "<div class='d-flex align-items-center'><label for="+i+"_answer"+"></label>"+"<input type='text' class='form-control answer3' id='"+i+"_answer3"+"'/></label>"+
+        "<label for="+i+"_answer3_match"+" ></label>"+"<input type='text' class='m-lg-2 form-control answer3_match' id='"+i+"_answer3_match"+"'/></label></div>" + "<br>";
+>>>>>>> 75419998ca8e6da5bdf317279d49826d7fddbdc2
 
     target3.innerHTML = target3.innerHTML + source ;
 }
@@ -18,8 +23,13 @@ cnt_answers3.addEventListener("change",function (){
     let target = document.getElementById("target3");
     target.innerHTML = "";
     for(let i =0; i < cnt; i++){
+<<<<<<< HEAD
         let source = "<label for="+i+"_answer"+"></label>"+"<input type='text' class='answer3' id='"+i+"_answer3"+"'/></label>"+
             "<label for="+i+"_answer3_match"+" ></label>"+"<input type='text' class='answer3_match' id='"+i+"_answer3_match"+"'/></label>" + "<br>";
+=======
+        let source = "<div class='d-flex align-items-center'><label for="+i+"_answer"+"></label>"+"<input type='text' class='form-control answer3' id='"+i+"_answer3"+"'/></label>"+
+            "<label for="+i+"_answer3_match"+" ></label>"+"<input type='text' class='m-lg-2 form-control answer3_match' id='"+i+"_answer3_match"+"'/></label></div>" + "<br>";
+>>>>>>> 75419998ca8e6da5bdf317279d49826d7fddbdc2
 
         target.innerHTML = target.innerHTML + source ;
     }

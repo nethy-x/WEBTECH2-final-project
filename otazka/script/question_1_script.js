@@ -6,7 +6,11 @@ let value1 = cnt_answers1.value;
 let target1 = document.getElementById("target1");
 
 for(let i =0; i < value1; i++){
+<<<<<<< HEAD
     let source =    "<label for="+i+"_question"+"></label>"+"<input type='text' class='answer1' id='"+i+"_answer1"+"'/></label>";
+=======
+    let source =    "<br><div class='d-flex align-items-center'><label for="+i+"_question"+"></label>"+"<input type='text' class='form-control answer1' id='"+i+"_answer1"+"'/></label></div>";
+>>>>>>> 75419998ca8e6da5bdf317279d49826d7fddbdc2
     target1.innerHTML = target1.innerHTML + source ;
 }
 
@@ -15,7 +19,7 @@ cnt_answers1.addEventListener("change",function (){
     let target = document.getElementById("target1");
     target.innerHTML = "";
     for(let i =0; i < cnt; i++){
-        let source =    "<label for="+i+"_question"+"></label>"+"<input type='text' class='answer1' id='"+i+"_answer1"+"'/></label>";
+        let source =    "<br><div class='d-flex align-items-center'><label for="+i+"_question"+"></label>"+"<input type='text' class='form-control answer1' id='"+i+"_answer1"+"'/></label></div>";
         target.innerHTML = target.innerHTML + source ;
     }
 

@@ -19,11 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stm = $conn->prepare("INSERT INTO student (id, name, surname) VALUES (?, ?, ?)");
     $stm->execute([$_POST['id_num'], $_POST['name'], $_POST['surname']]);
 
+    session_start();
     $_SESSION['name'] = $_POST["name"];
     $_SESSION['surname'] = $_POST["surname"];
     $_SESSION['id'] = $_POST["id_num"];
-
-    header("Location: tests/" . $_POST["code"] . ".php");
+    $_SESSION['role'] = "student";
+//    header("Location: tests/" . $_POST["code"] . ".php");
+    header("Location: student_home.php");
 }
 
 ?>

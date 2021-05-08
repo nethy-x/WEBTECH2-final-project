@@ -16,9 +16,11 @@ document.getElementById("Submit-Test").addEventListener("click",function (){
     let correct_answer2 = [];
     let incorrect_answer2 =[];
 
+    let answer_shuffle2 = [];
     Array.from(answers2).forEach(function (item,index){
         let id_answer2 = item.id.split("_");
         let id_correct2 = Array.from(correct_answer_element2)[index].id.split("_");
+        answer_shuffle2.push(item.value);
 
         if((id_answer2[0] === id_correct2[0]) && Array.from(correct_answer_element2)[index].checked=== true){
             correct_answer2.push(item.value);
@@ -27,7 +29,9 @@ document.getElementById("Submit-Test").addEventListener("click",function (){
         }
     });
 
-    let Json2 = {"question_type":"question_2","question":question2.value,"correct":correct_answer2,"incorrect":incorrect_answer2};
+
+    let Json2 = {"question_type":"question_2","question":question2.value,"correct":correct_answer2,"answer":answer_shuffle2};
+
     console.log(Json2)
 
     /*-----------------*/
@@ -53,7 +57,9 @@ document.getElementById("Submit-Test").addEventListener("click",function (){
 
     let question5 = document.getElementById("question5");
     let answer5 = document.getElementById('output').innerHTML;
-    let Json5 = {"question_type":"question_5","question":question5.value,"answer":answer5};
+
+    let Json5 = {"question_type":"question_5","question":question5.value,"question-math":answer5};
+
     console.log(Json5);
 
     let JSON = {Json1,Json2,Json3,Json4,Json5};

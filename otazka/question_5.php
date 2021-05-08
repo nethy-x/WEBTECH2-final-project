@@ -10,7 +10,6 @@
         document.getElementById('output').innerHTML = ev.target.getValue();
     });
 </script>
-<label for='submit-question5'></label>
-    <button id='submit-question5' name='submit-question4' class='btn btn-dark' >Submit</button>
+
  <script src='otazka/script/question_5_script.js'></script>";
 ?>

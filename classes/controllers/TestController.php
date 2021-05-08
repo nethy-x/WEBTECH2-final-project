@@ -1,5 +1,5 @@
 <?php
-require_once (__DIR__. "/../helpers/Database.php");
+require_once(__DIR__ . "/../helpers/Database.php");
 
 class TestController
 {
@@ -10,18 +10,33 @@ class TestController
         $this->conn = (new Database())->createConnection();
     }
 
-    public function insertTest($professor_id, $code, $test_json){
+    public function insertTest($professor_id, $code, $test_json)
+    {
         $stm = $this->conn->prepare("INSERT INTO tests (professor_id, code, test_json) 
                                             VALUES (:professor_id, :code, :test_json)");
 
-        try{
-        $stm->bindParam(":professor_id", $professor_id, PDO::PARAM_INT);
-        $stm->bindParam(":code", $code);
-        $stm->bindParam(":test_json", $test_json);
+        try {
+            $stm->bindParam(":professor_id", $professor_id, PDO::PARAM_INT);
+            $stm->bindParam(":code", $code);
+            $stm->bindParam(":test_json", $test_json);
 
-        $stm->execute();
-        return $this->conn->lastInsertId();
-        }catch (Exception $e){
+            $stm->execute();
+            return $this->conn->lastInsertId();
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function getByCode($code)
+    {
+        $stm = $this->conn->prepare("SELECT test_json FROM tests WHERE code=:code");
+
+        try {
+            $stm->bindParam(":code", $code);
+            $stm->execute();
+            $result = $stm->fetch();
+            return ($result == false ? false : $result["test_json"]);
+        } catch (Exception $e) {
             return false;
         }
     }

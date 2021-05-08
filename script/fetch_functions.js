@@ -19,3 +19,25 @@ function fetchDefineTest(test) {
             }
         });
 }
+
+function fetchTest(element){
+    let url = "api/fetchTestApi.php";
+    let request = new Request(url, {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    });
+
+    fetch(request)
+        .then((response) => response.json())
+        .then((data) => {
+            if (!data.error) {
+                console.log(data.test);
+                element.innerHTML = data.test;
+            } else {
+                console.log("error");
+                element.innerHTML = "chyba";
+            }
+        });
+}

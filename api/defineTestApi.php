@@ -14,6 +14,7 @@ if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
     $professor_id = $professorController->getIdByEmail($email);
     if($professor_id == false){
         $response = array("error" => true, "message" => "Professor not logged in, or wrong id");
+        echo json_encode($response);
         die();
     }
 
@@ -21,6 +22,7 @@ if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
     $test_id = $testController->insertTest($professor_id, $test_code, $test_json);
     if($test_id == false){
         $response = array("error" => true, "message" => "Fail during inserting test");
+        echo json_encode($response);
         die();
     }
 
@@ -28,4 +30,5 @@ if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
     echo json_encode($response);
 }else{
     $response = array("error" => true, "message" => "Panic error");
+    echo json_encode($response);
 }

@@ -1,10 +1,10 @@
 <?php
 
-  echo ' <div class="col-md-4">  <label class="form-label" for="question3" ></label>
+  echo ' <div class="col-md-4">  <label class="form-label" for="question3">Otázka</label>
     <input class="form-control" id="question3" type="text">
 
 
-    <label class="form-label" for="cnt-answers3"></label>
+    <label class="form-label" for="cnt-answers3">Počet párových odpovedí</label>
     <select class="form-control" id="cnt-answers3">
         <option>1</option>
         <option>2</option>
@@ -20,6 +20,7 @@
     </div>
 
 </div>
+
 
 <script src="otazka/script/question_3_script.js"></script>
 '

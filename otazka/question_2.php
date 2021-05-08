@@ -1,9 +1,10 @@
 <?php
- echo ' <div class="col-md-4">  <label class="form-label" for="question" ></label>
-    <input class="form-control" l id="question" type="text">
 
-    <label class="form-label" for="cnt-answers2"></label>
+ echo ' <div class="col-md-4">  <label class="form-label" for="question">Otázka</label>
+    <input class="form-control"  id="question" type="text">
+    <label class="form-label" for="cnt-answers2">Počet odpovedí</label>
         <select class="form-control" id="cnt-answers2">
+
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -17,9 +18,10 @@
 
     </div>
 
-    <label for="submit-question"></label>
+   
 
-    <input  type="button" name="submit-question" id="submit-question" class="btn btn-dark" value="Submit" ></div>
+    </div>
+  
 
 
 <script src="otazka/script/question_2_script.js"></script> '

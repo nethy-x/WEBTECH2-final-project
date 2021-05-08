@@ -84,11 +84,16 @@
                     </div>
                     <div>
                         <h2>question4</h2>
+
                         <?php include "otazka/question_4.php"?>
                     </div>
                     <div>
                         <h2>question5</h2>
                         <?php include "otazka/question_5.php"?>
+
+                    </div>
+                    <div>
+                        <input class="btn btn-dark" type="button" value="Submit" id="Submit-Test">
                     </div>
                 </form>
             </div>
@@ -97,4 +102,5 @@
 </div>
 </body>
 <script src="script/create_test.js"></script>
+<script src="script/submit_test.js"></script>
 </html>

@@ -1,8 +1,8 @@
 <?php
 
- echo ' <div class="col-md-4">  <label class="form-label" for="question" ></label>
+ echo ' <div class="col-md-4">  <label class="form-label" for="question">Otázka</label>
     <input class="form-control"  id="question" type="text">
-    <label class="form-label" for="cnt-answers2"></label>
+    <label class="form-label" for="cnt-answers2">Počet odpovedí</label>
         <select class="form-control" id="cnt-answers2">
 
             <option>1</option>

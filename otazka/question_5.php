@@ -1,6 +1,7 @@
 <?php echo "
-<div class='col-md-4'><label class='form-label' for='question5' >Otázka</label>
+<div class='col-md-4'><label class='form-label' for='question5'>Otázka</label>
 <input class='form-control' id='question5' type='text'>
+<label class='form-label' for='mf'>Príklad</label>
 <math-field id='mf' virtual-keyboard-mode='manual'>f(x)=</math-field>
 <div id='output'></div>
 </div>

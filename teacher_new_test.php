@@ -101,6 +101,7 @@
     </div>
 </div>
 </body>
+<script src="script/fetch_functions.js"></script>
 <script src="script/create_test.js"></script>
 <script src="script/submit_test.js"></script>
 </html>

@@ -15,7 +15,7 @@
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="">New test</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="logout.php">Sign out</a>
+            <a class="nav-link" href="logout.php">Odhlásiť sa</a>
         </li>
     </ul>
 </header>
@@ -28,13 +28,13 @@
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="teacher_home.php">
                             <span data-feather="home"></span>
-                            Home
+                            Domov
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
                             <span data-feather="file"></span>
-                            New test
+                            Nový test
                         </a>
                     </li>
                     <li class="nav-item">
@@ -62,7 +62,7 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">New test</h1>
+                <h1 class="h2">Nový test</h1>
             </div>
             <div>
                 <label for="create-test"></label>
@@ -70,28 +70,46 @@
             </div>
             <div id="target" style="display: none">
                 <form>
-                    <div>
-                        <h2>question1</h2>
+                    <div class="mt-3" id="question1-container">
+                        <h2>Krátke odpovede</h2>
                         <?php include "otazka/question_1.php"?>
+                        <hr>
                     </div>
                     <div>
-                        <h2>question2</h2>
+                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question1">
+                    </div>
+                    <div class="mt-3" id="question2-container">
+                        <h2>Viaceré odpovede</h2>
                         <?php include "otazka/question_2.php"?>
+                        <hr>
                     </div>
                     <div>
-                        <h2>question3</h2>
+                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question2">
+                    </div>
+                    <div class="mt-3" id="question3-container">
+                        <h2>Párovanie odpovedí</h2>
                         <?php include "otazka/question_3.php"?>
+                        <hr>
                     </div>
                     <div>
-                        <h2>question4</h2>
-
+                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question3">
+                    </div>
+                    <div class="mt-3" id="question4-container">
+                        <h2>Kreslenie</h2>
                         <?php include "otazka/question_4.php"?>
+                        <hr>
                     </div>
-                    <div>
-                        <h2>question5</h2>
+<!--                    <div>-->
+<!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question4">-->
+<!--                    </div>-->
+                    <div class="mt-3" id="question5-container">
+                        <h2>Matematická otázka</h2>
                         <?php include "otazka/question_5.php"?>
-
+                        <hr>
                     </div>
+<!--                    <div>-->
+<!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question5">-->
+<!--                    </div>-->
                     <div>
                         <input class="btn btn-dark" type="button" value="Submit" id="Submit-Test">
                     </div>
@@ -101,6 +119,12 @@
     </div>
 </div>
 </body>
+<script src="otazka/script/question_1_script.js"></script>
+<script src="otazka/script/question_2_script.js"></script>
+<script src="otazka/script/question_3_script.js"></script>
+<script src="otazka/script/question_4_script.js"></script>
+<script src='otazka/script/question_5_script.js'></script>";
+
 <script src="script/fetch_functions.js"></script>
 <script src="script/create_test.js"></script>
 <script src="script/submit_test.js"></script>

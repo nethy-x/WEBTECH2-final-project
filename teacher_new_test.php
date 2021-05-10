@@ -50,9 +50,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="teacher_reports.php">
                             <span data-feather="bar-chart-2"></span>
-                            Reports
+                            Notifikácie
                         </a>
                     </li>
                 </ul>

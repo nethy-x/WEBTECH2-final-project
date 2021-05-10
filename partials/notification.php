@@ -15,12 +15,13 @@ $testLogsController = new TestLogsController();
 $studentController = new StudentController();
 
 $test = "6096ff507e84e";
-
+$log = array();
 while (true) {
 $testId = $testController->getIdByCode($test);
 $trackersArray = $testLogsController->getAllByTestId($testId);
 
 $i = 0;
+$j = 0;
 foreach ($trackersArray as $item){
 
     $student = $studentController->getNameById($item["student_id"]);
@@ -30,11 +31,22 @@ foreach ($trackersArray as $item){
         'Tracker' => $item["tracker"],
     );
 
-//    echo  $student["name"] . " " . $student["surname"] . " ". $item["tracker"]."\r\n";
+    if($data[$i]['Tracker'] == "odisiel"){
+        $output[$j] = array(
+            'Meno' => $data[$i]['Meno'],
+            'Priezvisko' => $data[$i]['Priezvisko'],
+            'Tracker' => $data[$i]['Tracker'],
+        );
+
+        $j++;
+
+    }
     $i++;
 }
-echo 'data: ' . json_encode($data) . PHP_EOL . PHP_EOL;
+$log[] = $output;
+echo 'data: ' . json_encode($output) . PHP_EOL . PHP_EOL;
     ob_flush();
     flush();
     sleep(3);
 }
+

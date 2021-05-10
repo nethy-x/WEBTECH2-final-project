@@ -50,7 +50,7 @@ if(isset($_SESSION["code"])){
                 <input type="button" id="start-test" class="btn btn-primary" value="Začať písať test">
             </div>
 
-            <div id="test">
+            <div id="test" class=" ">
 
             </div>
         </main>

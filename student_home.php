@@ -6,6 +6,8 @@ $code = "Kód testu";
 
 if(isset($_SESSION["code"])){
     $code = $_SESSION["code"];
+}else{
+    header("Location: index.php?role=student");
 }
 ?>
 <html lang="en">
@@ -32,7 +34,6 @@ if(isset($_SESSION["code"])){
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="logout.php">Odhlásiť sa</a>
         </li>
-
     </ul>
 </header>
 <div id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">

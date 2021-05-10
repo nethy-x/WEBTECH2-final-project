@@ -7,6 +7,7 @@ if(isset($_SESSION["code"])){
     $code = $_SESSION["code"];
 }else{
     header("Location: index.php?role=student");
+
 }
 
 ?>

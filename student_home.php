@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 $code = "Kód testu";
@@ -6,7 +7,6 @@ $code = "Kód testu";
 if(isset($_SESSION["code"])){
     $code = $_SESSION["code"];
 }
-
 ?>
 <html lang="en">
 <head>
@@ -23,6 +23,7 @@ if(isset($_SESSION["code"])){
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="script/fetch_functions.js"></script>
     <script src="script/start_test.js"></script>
+    <script src="script/page_visibility.js"></script>
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -31,7 +32,7 @@ if(isset($_SESSION["code"])){
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="logout.php">Odhlásiť sa</a>
         </li>
-        z
+
     </ul>
 </header>
 <div id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">

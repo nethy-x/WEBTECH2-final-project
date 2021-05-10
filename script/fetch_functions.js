@@ -15,7 +15,7 @@ function fetchDefineTest(test) {
             if (!data.error) {
                 console.log(data.id);
             } else {
-                console.log("error");
+                console.log(data.message);
             }
         });
 }
@@ -33,8 +33,33 @@ function fetchTest(element){
         .then((response) => response.json())
         .then((data) => {
             if (!data.error) {
-                console.log(data.test);
+                //console.log(data.test);
                 element.innerHTML = data.test;
+            } else {
+                console.log("error");
+                element.innerHTML = "chyba";
+            }
+        });
+}
+
+function fetchTime(element){
+    let url = "api/fetchTimeApi.php";
+    let request = new Request(url, {
+        method: 'GET',
+        headers: {
+            'Content-type': 'text/html; charset=UTF-8'
+        }
+    });
+
+    fetch(request)
+    .then(function(response) {
+        return response.json();
+    })
+        .then(function(data) {
+            if (!data.error) {
+                //console.log(data.time);
+                element.innerHTML = data.time;
+                document.getElementById("timer").style = "display:block";
             } else {
                 console.log("error");
                 element.innerHTML = "chyba";

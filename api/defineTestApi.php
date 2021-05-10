@@ -7,7 +7,6 @@ session_start();
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
-    $test_json = json_encode($data->test);
     $test_code = uniqid();
     $email = $_SESSION["username"];
 
@@ -19,7 +18,10 @@ if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
         die();
     }
     $testController = new TestController();
-    $test_id = $testController->insertTest($professor_id, $test_code, $test_json, $data->time_limit);
+    $time_limit = $data->test->time_limit;
+    unset($data->test->time_limit);
+    $test_json = json_encode($data->test);
+    $test_id = $testController->insertTest($professor_id, $test_code, $test_json, $time_limit);
     if($test_id == false){
         $response = array("error" => true, "message" => "Fail during inserting test");
         echo json_encode($response);

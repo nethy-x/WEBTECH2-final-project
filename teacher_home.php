@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(isset($_SESSION["username"])){
+
+}else{
+    header("Location: index.php?role=professor");
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">

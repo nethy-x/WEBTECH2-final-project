@@ -1,4 +1,5 @@
 <?php
+
 require_once(__DIR__ . "/../classes/controllers/TestController.php");
 require_once(__DIR__ . "/../classes/controllers/ProfessorController.php");
 
@@ -17,9 +18,8 @@ if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
         echo json_encode($response);
         die();
     }
-
     $testController = new TestController();
-    $test_id = $testController->insertTest($professor_id, $test_code, $test_json);
+    $test_id = $testController->insertTest($professor_id, $test_code, $test_json, $data->time_limit);
     if($test_id == false){
         $response = array("error" => true, "message" => "Fail during inserting test");
         echo json_encode($response);

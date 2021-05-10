@@ -1,20 +1,23 @@
-var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-var toastList = toastElList.map(function (toastEl) {
-    return new bootstrap.Toast(toastEl, option)
-})
 
-var notificationArray = 0;
+var notificationTable = localStorage.getItem('notification');
+
+
+
 var source = new EventSource("partials/notification.php");
 source.onopen = function (event) {
     console.log(event);
     console.log("open");
 };
 source.onmessage = function (event) {
-    console.log(notificationArray.length);
-    console.log(event.data.length);
-    if (notificationArray.length !== event.data.length) {
-        notificationArray = event.data;
-        document.getElementById("notification-div").innerHTML += "<p>" + notificationArray + "</p>";
+
+    if (notificationTable.length !== event.data.length) {
+        localStorage.setItem('notification', event.data);
+        $(".toast").toast("show");
+        logs = JSON.parse(event.data);
+        document.getElementById("table-log").innerHTML = " ";
+        logs.forEach((element, index) => {
+            document.getElementById("table-log").innerHTML += "<tr>" + "<td>" + element["Meno"] +"</td>" + "<td>" + element["Priezvisko"] +"</td>" + "<td>" + element["Tracker"] +"</td>" + "</tr>"
+        });
     }
 
 };

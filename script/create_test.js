@@ -30,7 +30,7 @@ document.getElementById("create-test").addEventListener("click", function () {
     });
     const newQuestion3 = document.getElementById("new-question3");
     newQuestion3.addEventListener("click", () => {
-        question3Container.innerHTML += addPairQuestion(question2id);
+        question3Container.innerHTML += addPairQuestion(question3id);
         addQuestion3Answer();
         question3id++;
     });

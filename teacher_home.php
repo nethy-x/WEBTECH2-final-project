@@ -16,7 +16,10 @@ if(isset($_SESSION["username"])){
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script src="script/notification.js"></script>
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -60,7 +63,7 @@ if(isset($_SESSION["username"])){
                     <li class="nav-item">
                         <a class="nav-link" href="teacher_reports.php">
                             <span data-feather="bar-chart-2"></span>
-                            Notifikácie
+                            Reports
                         </a>
                     </li>
                 </ul>
@@ -75,6 +78,18 @@ if(isset($_SESSION["username"])){
                     <div class="btn-group me-2">
                         <button type="button" class="btn btn-sm btn-outline-secondary">Test in progress</button>
                         <button type="button" class="btn btn-sm btn-outline-secondary">Planned test</button>
+                    </div>
+                </div>
+            </div>
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+                <div class="toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="me-auto">Alt+Tab tracker</strong>
+                        <small class="text-muted">just now</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div id="notification-body" class="toast-body">
+                        Niekto opustil tab.
                     </div>
                 </div>
             </div>

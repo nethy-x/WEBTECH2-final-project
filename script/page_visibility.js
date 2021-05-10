@@ -1,14 +1,14 @@
+document.getElementById("start-test").addEventListener("click", function () {
+    document.addEventListener('visibilitychange', function (event) {
+        console.log('visibilitychange', document.hidden);
+        if (document.hidden) {
+            let state = "odisiel";
+            fetchTracker(state);
+        } else {
 
-
-document.addEventListener('visibilitychange', function(event){
-    console.log('visibilitychange', document.hidden);
-    if(document.hidden){
-        let state = "odisiel";
-        fetchTracker(state);
-    }else{
-
-    }
-})
+        }
+    })
+});
 
 function fetchTracker(state) {
     let url = "api/fetchTrackingApi.php";

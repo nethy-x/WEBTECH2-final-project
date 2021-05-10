@@ -25,7 +25,7 @@ if(isset($_SESSION["code"])){
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="script/fetch_functions.js"></script>
     <script src="script/start_test.js"></script>
-    <script src="script/page_visibility.js"></script>
+    <script defer src="script/page_visibility.js"></script>
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">

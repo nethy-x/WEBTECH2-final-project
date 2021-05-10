@@ -78,7 +78,7 @@
                     <div>
                         <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question1">
                     </div>
-                    <div class="mt-3" id="question2-container">
+                    <div class="mt-3 " id="question2-container">
                         <h2>Viaceré odpovede</h2>
                         <?php include "otazka/question_2.php"?>
                         <hr>

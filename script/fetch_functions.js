@@ -37,9 +37,11 @@ function fetchTest(element){
                 /*for(let i in data.test){
                     let question = data.test[i];
                     console.log(question);
-                }
-                console.log(data.test);*/
+                }*/
+
+                console.log(data.test);
                 query_question_1(data,element)
+                query_question_2(data,element)
 
             } else {
                 console.log("error");
@@ -49,8 +51,14 @@ function fetchTest(element){
 
 }
 
+
 function query_question_1(data ,element){
     let target_div_for_all_question_type_1 = document.createElement("div");
+    let tmp_header_for_identify_queried_questions = document.createElement("h2");
+
+    tmp_header_for_identify_queried_questions.innerHTML = "Otazky typu 1";
+    target_div_for_all_question_type_1.append(tmp_header_for_identify_queried_questions);
+
     target_div_for_all_question_type_1.classList.add("bg-light");
 
     for(let i in data.test.Json1){
@@ -69,6 +77,46 @@ function query_question_1(data ,element){
             question.classList.add("m-2");
             question.placeholder = "answer";
             target_div_for_question.append(question);
+        }
+        target_div_for_all_question_type_1.append(target_div_for_question);
+    }
+    element.append(target_div_for_all_question_type_1)
+}
+
+function query_question_2(data ,element){
+    let target_div_for_all_question_type_1 = document.createElement("div");
+    let tmp_header_for_identify_queried_questions = document.createElement("h2");
+
+    tmp_header_for_identify_queried_questions.innerHTML = "Otazky typu 2";
+    target_div_for_all_question_type_1.append(tmp_header_for_identify_queried_questions);
+
+    target_div_for_all_question_type_1.classList.add("bg-light");
+
+    for(let i in data.test.Json2){
+        let target_div_for_question = document.createElement("div");
+        target_div_for_question.classList.add("col-md-4")
+        target_div_for_question.style.padding = "25px"
+
+        target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
+            "<p style='text-align: center'>"+data.test.Json1[i].question+"</p>";
+
+        for(let j in data.test.Json2[i].answer){
+            let divForFlexStyle = document.createElement("div")
+            divForFlexStyle.classList.add("d-flex");
+
+            let question = document.createElement("p");
+            question.classList.add("form-control");
+            question.classList.add("p-3");
+            question.classList.add("d-flex");
+            let checkbox = document.createElement("input");
+
+            checkbox.type = "checkbox";
+            //TODO zarovnat checkbox do stredu
+            checkbox.classList.add("m-2")
+            question.innerHTML = data.test.Json2[i].answer[j];
+            divForFlexStyle.append(question);
+            divForFlexStyle.append(checkbox);
+            target_div_for_question.append(divForFlexStyle);
         }
         target_div_for_all_question_type_1.append(target_div_for_question);
     }

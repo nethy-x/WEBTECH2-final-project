@@ -33,20 +33,24 @@ function fetchTest(element){
         .then((response) => response.json())
         .then((data) => {
             if (!data.error) {
-              //  element.innerHTML = data.test;
-                /*for(let i in data.test){
-                    let question = data.test[i];
-                    console.log(question);
-                }*/
 
-                console.log(data.test);
+               // console.log(data.test);
                 query_question_1(data,element);
                 query_question_2(data,element);
                 query_question_3(data,element);
                 query_question_4(data,element);
                 query_question_5(data,element);
 
-
+                let submit_button = document.createElement("input");
+                let scriptForSubmit = document.createElement("script");
+                scriptForSubmit.src = "script/student_test_perspective/submit_test.js"
+                submit_button.type = "button";
+                submit_button.classList.add("btn");
+                submit_button.classList.add("btn-danger");
+                submit_button.value = "submit";
+                submit_button.id = "submit_test";
+                element.append(submit_button);
+                element.append(scriptForSubmit);
                 element.style.marginBottom = "270px"
 
             } else {
@@ -237,7 +241,7 @@ function query_question_5(data ,element){
             question.style.border = "1px solid black";
             question.style.boxShadow = "0 0 8px rgba(0,0,0,.2";
             question.innerHTML = data.test.Json5["question-math"];
-            console.log(data.test.Json5["question-math"]);
+           // console.log(data.test.Json5["question-math"]);
 
             let answer = document.createElement("math-field");
 

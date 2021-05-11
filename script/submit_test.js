@@ -19,7 +19,6 @@ document.getElementById("Submit-Test").addEventListener("click", function () {
     console.log(Json1);
 
     /*-------------*/
-
     let questions2 = document.querySelectorAll(".question2");
 
     let Json2 = {};
@@ -85,7 +84,6 @@ document.getElementById("Submit-Test").addEventListener("click", function () {
 
     let question5 = document.getElementById("question5");
     let answer5 = document.getElementById('output').innerHTML;
-
     let Json5 = {"question_type": "question_5", "question": question5.value, "question-math": answer5};
 
     console.log(Json5);

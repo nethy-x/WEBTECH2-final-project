@@ -1,3 +1,4 @@
+let testJSON;
 function fetchDefineTest(test) {
     let url = "api/defineTestApi.php";
     let request = new Request(url, {
@@ -33,7 +34,7 @@ function fetchTest(element){
         .then((response) => response.json())
         .then((data) => {
             if (!data.error) {
-
+                testJSON = data.test;
                 console.log(data.test);
                 query_question_1(data,element);
                 query_question_2(data,element);
@@ -227,12 +228,8 @@ function query_question_5(data ,element){
         target_div_for_question.classList.add("col-md-4")
         target_div_for_question.style.padding = "25px"
 
-        console.log(i);
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
             "<p style='text-align: center'>"+data.test.Json5[i].question+"</p>";
-
-      //  for(let j in data.test.Json1[i].correct){
-
 
             let question = document.createElement("math-field");
             question.style.fontSize = "32px";
@@ -241,7 +238,7 @@ function query_question_5(data ,element){
             question.style.border = "1px solid black";
             question.style.boxShadow = "0 0 8px rgba(0,0,0,.2";
             question.innerHTML = data.test.Json5[i]["question-math"];
-           // console.log(data.test.Json5["question-math"]);
+
 
             let answer = document.createElement("math-field");
 
@@ -254,7 +251,7 @@ function query_question_5(data ,element){
 
             target_div_for_question.append(question);
             target_div_for_question.append(answer);
-     //   }
+
         target_div_for_all_question_type_5.append(target_div_for_question);
     }
     element.append(target_div_for_all_question_type_5)

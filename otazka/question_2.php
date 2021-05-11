@@ -1,3 +1,4 @@
+
 <div class="col-md-4">
     <label class="form-label" for="question2_1">Otázka</label>
     <input class="form-control question2" id="question2_1" type="text">
@@ -19,5 +20,6 @@
             <label for='question2_1_answer_1_match'></label>
             <input type='radio' class='m-lg-4 answer2_match_1' id='question2_1_answer_1_match'/>
         </div>
+
     </div>
 </div>

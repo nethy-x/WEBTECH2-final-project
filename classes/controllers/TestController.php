@@ -40,4 +40,17 @@ class TestController
             return false;
         }
     }
+    public function getIdByCode($code)
+    {
+        $stm = $this->conn->prepare("SELECT id FROM tests WHERE code=:code");
+
+        try {
+            $stm->bindParam(":code", $code);
+            $stm->execute();
+            $result = $stm->fetch();
+            return ($result == false ? false : $result["id"]);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }

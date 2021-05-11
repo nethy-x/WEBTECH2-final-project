@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (isset($_SESSION['role'])) {
+    if (strcmp($_SESSION['role'], "student") == 0 && isset($_SESSION['code'])) {
+        header("Location: student_home.php");
+        die();
+    } else if (strcmp($_SESSION['role'], "professor") == 0 && isset($_SESSION['username']) && isset($_SESSION['id'])) {
+        header("Location: teacher_home.php");
+        die();
+    }
+}
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -29,18 +41,7 @@
                     localStorage.clear();
                 </script>
                 <?php
-                session_start();
-                if (isset($_SESSION['role'])) {
-                    if(strcmp($_SESSION['role'],"student") == 0 && isset($_SESSION['code'])){
-                        header("Location: student_home.php");
-                        die();
-                    }else if(strcmp($_SESSION['role'],"professor") == 0 && isset($_SESSION['username']) && isset($_SESSION['id'])){
-                        header("Location: teacher_home.php");
-                        die();
-                    }
-                } else {
-                    include __DIR__ . "/partials/page-login.php";
-                }
+                include __DIR__ . "/partials/page-login.php";
                 ?>
             </div>
         </main>

@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 $code = "Kód testu";
@@ -7,6 +8,7 @@ if(isset($_SESSION["code"])){
     $code = $_SESSION["code"];
 }else{
     header("Location: index.php?role=student");
+	die();
 }
 
 require_once(__DIR__ . "/classes/helpers/Database.php");
@@ -20,13 +22,14 @@ if (isset($_POST["test_finished"])) {
 }
 $conn = null;
 
+
 ?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>Home</title>
+    <title>Testovanie</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -34,8 +37,10 @@ $conn = null;
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js"></script>
     <script src="script/fetch_functions.js"></script>
     <script src="script/start_test.js"></script>
+    <script defer src="script/page_visibility.js"></script>
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -60,7 +65,7 @@ $conn = null;
                 <button type="button" id="start-test" class="btn btn-primary">Začať písať test</button>
             </div>
 
-            <div id="test">
+            <div id="test" class=" ">
 
             </div>
         </main>
@@ -105,5 +110,6 @@ $conn = null;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script src="time_limit/js/countdown.js"></script>
+<script src="https://unpkg.com/mathlive/dist/mathlive.min.js"></script>
 </body>
 </html>

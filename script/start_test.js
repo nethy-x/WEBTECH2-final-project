@@ -10,3 +10,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         fetchTime(time);
     });
 });
+
+
+
+
+
+

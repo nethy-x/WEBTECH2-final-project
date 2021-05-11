@@ -44,14 +44,42 @@ class TestController
     public function getTime($code)
     {
         $stm = $this->conn->prepare("SELECT time_limit FROM tests WHERE code=:code");
-
+    
         try {
             $stm->bindParam(":code", $code);
             $stm->execute();
             $result = $stm->fetch();
             return ($result == false ? false : $result["time_limit"]);
+
         } catch (Exception $e) {
             return false;
         }
+    }
+    public function getIdByCode($code)
+    {
+        $stm = $this->conn->prepare("SELECT id FROM tests WHERE code=:code");
+
+        try {
+            $stm->bindParam(":code", $code);
+            $stm->execute();
+            $result = $stm->fetch();
+
+            return ($result == false ? false : $result["id"]);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function getIdCodeByProfessor($professor_id){
+        $stm = $this->conn->prepare("SELECT id, code FROM tests WHERE professor_id=:professor_id");
+
+        try {
+            $stm->bindParam(":professor_id", $professor_id);
+            $stm->execute();
+            return $stm->fetchAll();
+        } catch (Exception $e) {
+            return false;
+        }
+
     }
 }

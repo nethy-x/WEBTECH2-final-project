@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ((isset($_POST['email']) && isset($_POST['psw'])) &&
         (!empty($_POST['email']) && !empty($_POST['psw']))
     ) {
-        $sql = "SELECT email, password FROM professor WHERE email=?";
+        $sql = "SELECT id, email, password FROM professor WHERE email=?";
 
         $stm = $conn->prepare($sql);
         $stm->execute([$_POST["email"]]);
@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($_POST["psw"], $user["password"])) {
                 session_start();
                 $_SESSION['username'] = $user['email'];
+                $_SESSION['id'] = $user['id'];
                 $_SESSION['role'] = "professor";
                 header("location: teacher_home.php");
             } else {

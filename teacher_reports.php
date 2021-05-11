@@ -1,11 +1,8 @@
 <?php
-require_once(__DIR__ . "/classes/controllers/ProfessorController.php");
 session_start();
 if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
     $id =  $_SESSION["id"];
     $email =  $_SESSION["username"];
-    $professorController = new ProfessorController();
-    $name = $professorController->getNameSurnameByEmail($email);
 }else{
     header("Location: index.php?role=professor");
     die();
@@ -24,7 +21,8 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 
-    <script src="script/notification.js"></script>
+
+
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -42,7 +40,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
+                        <a class="nav-link" href="teacher_home.php">
                             Domov
                         </a>
                     </li>
@@ -62,26 +60,23 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="teacher_reports.php">
+                        <a class="nav-link  active" aria-current="page" href="teacher_reports.php">
                             Reports
                         </a>
                     </li>
                 </ul>
+
             </div>
         </nav>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Vítajte <?php echo $name?>!</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group me-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Test in progress</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Planned test</button>
-                    </div>
-                </div>
+                <h1 class="h2">Zoznam ALT+TABerov</h1>
             </div>
+
+
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-                <div class="toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast"  role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header">
                         <strong class="me-auto">Alt+Tab tracker</strong>
                         <small class="text-muted">just now</small>
@@ -92,15 +87,38 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                     </div>
                 </div>
             </div>
-                <!--
-                TODO
-                -->
-                <?php
+
+            <div id="logs-div">
+                <table>
+                <thead>
+                <tr>
+                    <th>Meno</th>
+                    <th>Priezvisko</th>
+                    <th>Stav</th>
+                </tr>
+                </thead>
+                <tbody id="table-log">
+                    <script>
+                        var notificationTable = localStorage.getItem('notification');
+                        var logs = JSON.parse(notificationTable)
+                        logs.forEach((element, index) => {
+                            document.getElementById("table-log").innerHTML += "<tr>" + "<td>" + element["Meno"] +"</td>" + "<td>" + element["Priezvisko"] +"</td>" + "<td>" + element["Tracker"] +"</td>" + "</tr>"
+                        });</script>
+                </tbody>
+                </table>
+            </div>
 
 
-                ?>
+            <!--
+            TODO
+            -->
+            <?php
+
+
+            ?>
         </main>
     </div>
 </div>
 </body>
+<script src="script/notification.js"></script>
 </html>

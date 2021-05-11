@@ -1,14 +1,31 @@
 <?php
-require_once(__DIR__ . "/classes/controllers/ProfessorController.php");
+require_once(__DIR__ . "/classes/controllers/StudentController.php");
+
 session_start();
-if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
-    $id =  $_SESSION["id"];
-    $email =  $_SESSION["username"];
-    $professorController = new ProfessorController();
-    $name = $professorController->getNameSurnameByEmail($email);
-}else{
+if (!isset($_GET["code"]) || !isset($_GET["student_id"]) || $_GET["student_id"] == -1) {
+    header("Location: teacher_detail.php");
+    die();
+}
+
+$code = $_GET["code"];
+$student_id = $_GET["student_id"];
+
+$_SESSION["code"] = $_GET["code"];
+//$_SESSION["student_id"] = $_GET["student_id"];
+
+if (!isset($_SESSION["username"]) || !isset($_SESSION["id"])) {
     header("Location: index.php?role=professor");
     die();
+}
+
+$studentController = new StudentController();
+$student_name = $studentController->getNameById($student_id);
+if($student_name == false){
+    $name = "Nedefinované";
+    $surname = "Nedefinované";
+}else{
+    $name = $student_name["name"];
+    $surname = $student_name["surname"];
 }
 ?>
 
@@ -72,7 +89,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Vítajte <?php echo $name?>!</h1>
+                <h1 class="h2">Detail testu s k. <?php echo $code?> <br> Študenta: <?php echo $name . " ". $surname?></h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2">
                         <button type="button" class="btn btn-sm btn-outline-secondary">Test in progress</button>
@@ -92,13 +109,13 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                     </div>
                 </div>
             </div>
-                <!--
-                TODO
-                -->
-                <?php
+            <!--
+            TODO
+            -->
+            <?php
 
 
-                ?>
+            ?>
         </main>
     </div>
 </div>

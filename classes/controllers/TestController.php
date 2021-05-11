@@ -40,6 +40,7 @@ class TestController
             return false;
         }
     }
+
     public function getIdByCode($code)
     {
         $stm = $this->conn->prepare("SELECT id FROM tests WHERE code=:code");
@@ -54,8 +55,9 @@ class TestController
         }
     }
 
-    public function getIdCodeByProfessor($professor_id){
-        $stm = $this->conn->prepare("SELECT id, code FROM tests WHERE professor_id=:professor_id");
+    public function getIdCodeByProfessor($professor_id)
+    {
+        $stm = $this->conn->prepare("SELECT * FROM tests WHERE professor_id=:professor_id");
 
         try {
             $stm->bindParam(":professor_id", $professor_id);
@@ -64,6 +66,19 @@ class TestController
         } catch (Exception $e) {
             return false;
         }
+    }
 
+    public function toggleActivation($code, $status)
+    {
+        $stm = $this->conn->prepare("UPDATE tests SET status=:status WHERE code=:code");
+
+        try {
+            $stm->bindParam(":status", $status);
+            $stm->bindParam(":code", $code);
+            $stm->execute();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }

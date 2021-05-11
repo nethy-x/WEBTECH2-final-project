@@ -46,6 +46,9 @@ function fetchTest(element){
                 query_question_4(data,element);
                 query_question_5(data,element);
 
+
+                element.style.marginBottom = "270px"
+
             } else {
                 console.log("error");
                 element.innerHTML = "chyba";

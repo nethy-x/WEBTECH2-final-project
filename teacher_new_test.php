@@ -129,6 +129,8 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
 <script src="otazka/script/question_3_script.js"></script>
 <script src="otazka/script/question_4_script.js"></script>
 <script src='otazka/script/question_5_script.js'></script>
+
+
 <script src="script/fetch_functions.js"></script>
 <script src="script/create_test.js"></script>
 <script src="script/submit_test.js"></script>

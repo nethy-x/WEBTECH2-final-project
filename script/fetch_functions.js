@@ -43,6 +43,8 @@ function fetchTest(element){
                 query_question_1(data,element);
                 query_question_2(data,element);
                 query_question_3(data,element);
+                query_question_4(data,element);
+                query_question_5(data,element);
 
             } else {
                 console.log("error");
@@ -71,27 +73,27 @@ function query_question_1(data ,element){
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
                                             "<p style='text-align: center'>"+data.test.Json1[i].question+"</p>";
 
-        for(let j in data.test.Json1[i].correct){
+        /*for(let j in data.test.Json1[i].correct){*/
             let question = document.createElement("input");
             question.type = "input";
             question.classList.add("form-control");
             question.classList.add("m-2");
             question.placeholder = "answer";
             target_div_for_question.append(question);
-        }
+      /*  }*/
         target_div_for_all_question_type_1.append(target_div_for_question);
     }
     element.append(target_div_for_all_question_type_1)
 }
 
 function query_question_2(data ,element){
-    let target_div_for_all_question_type_1 = document.createElement("div");
+    let target_div_for_all_question_type_2 = document.createElement("div");
     let tmp_header_for_identify_queried_questions = document.createElement("h2");
 
     tmp_header_for_identify_queried_questions.innerHTML = "Otazky typu 2";
-    target_div_for_all_question_type_1.append(tmp_header_for_identify_queried_questions);
+    target_div_for_all_question_type_2.append(tmp_header_for_identify_queried_questions);
 
-    target_div_for_all_question_type_1.classList.add("bg-light");
+    target_div_for_all_question_type_2.classList.add("bg-light");
 
     for(let i in data.test.Json2){
         let target_div_for_question = document.createElement("div");
@@ -119,19 +121,19 @@ function query_question_2(data ,element){
             divForFlexStyle.append(checkbox);
             target_div_for_question.append(divForFlexStyle);
         }
-        target_div_for_all_question_type_1.append(target_div_for_question);
+        target_div_for_all_question_type_2.append(target_div_for_question);
     }
-    element.append(target_div_for_all_question_type_1)
+    element.append(target_div_for_all_question_type_2)
 }
 
 function query_question_3(data,element){
-    let target_div_for_all_question_type_1 = document.createElement("div");
+    let target_div_for_all_question_type_3 = document.createElement("div");
     let tmp_header_for_identify_queried_questions = document.createElement("h2");
 
     tmp_header_for_identify_queried_questions.innerHTML = "Otazky typu 3";
-    target_div_for_all_question_type_1.append(tmp_header_for_identify_queried_questions);
+    target_div_for_all_question_type_3.append(tmp_header_for_identify_queried_questions);
 
-    target_div_for_all_question_type_1.classList.add("bg-light");
+    target_div_for_all_question_type_3.classList.add("bg-light");
 
     for(let i in data.test.Json3){
         let target_div_for_question = document.createElement("div");
@@ -160,12 +162,95 @@ function query_question_3(data,element){
             left_answer.innerHTML = key
             right_answer.innerHTML = data.test.Json3[i].answer[key];
 
-            console.log(data.test.Json3[i].answer)
+           // console.log(data.test.Json3[i].answer)
             divForFlexStyle.append(left_answer);
             divForFlexStyle.append(right_answer);
             target_div_for_question.append(divForFlexStyle);
         }
-        target_div_for_all_question_type_1.append(target_div_for_question);
+        target_div_for_all_question_type_3.append(target_div_for_question);
     }
-    element.append(target_div_for_all_question_type_1)
+    element.append(target_div_for_all_question_type_3)
 }
+
+function query_question_4(data ,element){
+    let target_div_for_all_question_type_4 = document.createElement("div");
+    let tmp_header_for_identify_queried_questions = document.createElement("h2");
+
+    tmp_header_for_identify_queried_questions.innerHTML = "Otazky typu 4";
+    target_div_for_all_question_type_4.append(tmp_header_for_identify_queried_questions);
+
+    target_div_for_all_question_type_4.classList.add("bg-light");
+
+   // for(let i in data.test.Json4){
+        let target_div_for_question = document.createElement("div");
+        target_div_for_question.classList.add("col-md-4")
+        target_div_for_question.style.padding = "25px"
+
+
+        target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
+            "<p style='text-align: center'>"+data.test.Json4.question+"</p>";
+
+            let canvas = document.createElement('canvas');
+            let script = document.createElement("script");
+
+            canvas.classList.add("bg-dark")
+            canvas.id = "canvas";
+
+            script.canvas = "canvas";
+
+            target_div_for_question.append(canvas);
+            target_div_for_question.append(script);
+
+        target_div_for_all_question_type_4.append(target_div_for_question);
+  //  }
+    element.append(target_div_for_all_question_type_4)
+}
+
+function query_question_5(data ,element){
+    let target_div_for_all_question_type_5 = document.createElement("div");
+    let tmp_header_for_identify_queried_questions = document.createElement("h2");
+
+    tmp_header_for_identify_queried_questions.innerHTML = "Otazky typu 5";
+    target_div_for_all_question_type_5.append(tmp_header_for_identify_queried_questions);
+
+    target_div_for_all_question_type_5.classList.add("bg-light");
+
+    //for(let i in data.test.Json5){
+        let target_div_for_question = document.createElement("div");
+        target_div_for_question.classList.add("col-md-4")
+        target_div_for_question.style.padding = "25px"
+
+
+        target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
+            "<p style='text-align: center'>"+data.test.Json5/*[i]*/.question+"</p>";
+
+       // for(let j in data.test.Json1[i].correct){
+
+
+            let question = document.createElement("math-field");
+            question.style.fontSize = "32px";
+            question.style.padding = "8px";
+            question.style.borderRadius = "8px";
+            question.style.border = "1px solid black";
+            question.style.boxShadow = "0 0 8px rgba(0,0,0,.2";
+            question.innerHTML = data.test.Json5["question-math"];
+            console.log(data.test.Json5["question-math"]);
+
+            let answer = document.createElement("math-field");
+
+            answer.setAttribute("virtual-keyboard-mode","manual");
+            answer.style.fontSize = "32px";
+            answer.style.padding = "8px";
+            answer.style.borderRadius = "8px";
+            answer.style.border = "1px solid black";
+            answer.style.boxShadow = "0 0 8px rgba(0,0,0,.2)";
+
+            target_div_for_question.append(question);
+            target_div_for_question.append(answer);
+     //   }
+        target_div_for_all_question_type_5.append(target_div_for_question);
+   // }
+    element.append(target_div_for_all_question_type_5)
+}
+
+

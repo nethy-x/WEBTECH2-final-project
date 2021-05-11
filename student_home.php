@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 $code = "Kód testu";
@@ -7,9 +8,7 @@ if(isset($_SESSION["code"])){
     $code = $_SESSION["code"];
 }else{
     header("Location: index.php?role=student");
-
 }
-
 ?>
 <html lang="en">
 <head>
@@ -26,6 +25,7 @@ if(isset($_SESSION["code"])){
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="script/fetch_functions.js"></script>
     <script src="script/start_test.js"></script>
+    <script defer src="script/page_visibility.js"></script>
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -50,7 +50,7 @@ if(isset($_SESSION["code"])){
                 <input type="button" id="start-test" class="btn btn-primary" value="Začať písať test">
             </div>
 
-            <div id="test">
+            <div id="test" class=" ">
 
             </div>
         </main>

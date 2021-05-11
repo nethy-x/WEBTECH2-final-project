@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>New Test</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom-style/new-test.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="teacher_reports.php">
                             <span data-feather="bar-chart-2"></span>
                             Reports
                         </a>
@@ -78,7 +78,11 @@
                     <div>
                         <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question1">
                     </div>
+<<<<<<< HEAD
                     <div class="mt-3" id="question2-container">
+=======
+                    <div class="mt-3 " id="question2-container">
+>>>>>>> 3a6c54a6ee0d55b5d45c904ee7cd23d8a4cb4ee0
                         <h2>Viaceré odpovede</h2>
                         <?php include "otazka/question_2.php"?>
                         <hr>
@@ -123,8 +127,12 @@
 <script src="otazka/script/question_2_script.js"></script>
 <script src="otazka/script/question_3_script.js"></script>
 <script src="otazka/script/question_4_script.js"></script>
+<<<<<<< HEAD
 <script src='otazka/script/question_5_script.js'></script>";
 
+=======
+<script src='otazka/script/question_5_script.js'></script>
+>>>>>>> 3a6c54a6ee0d55b5d45c904ee7cd23d8a4cb4ee0
 <script src="script/fetch_functions.js"></script>
 <script src="script/create_test.js"></script>
 <script src="script/submit_test.js"></script>

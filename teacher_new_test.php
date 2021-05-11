@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>New Test</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom-style/new-test.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="teacher_reports.php">
                             <span data-feather="bar-chart-2"></span>
                             Reports
                         </a>
@@ -124,6 +124,7 @@
 <script src="otazka/script/question_3_script.js"></script>
 <script src="otazka/script/question_4_script.js"></script>
 <script src='otazka/script/question_5_script.js'></script>
+
 
 <script src="script/fetch_functions.js"></script>
 <script src="script/create_test.js"></script>

@@ -53,4 +53,17 @@ class TestController
             return false;
         }
     }
+
+    public function getIdCodeByProfessor($professor_id){
+        $stm = $this->conn->prepare("SELECT id, code FROM tests WHERE professor_id=:professor_id");
+
+        try {
+            $stm->bindParam(":professor_id", $professor_id);
+            $stm->execute();
+            return $stm->fetchAll();
+        } catch (Exception $e) {
+            return false;
+        }
+
+    }
 }

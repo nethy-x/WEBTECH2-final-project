@@ -8,6 +8,7 @@ if(isset($_SESSION["code"])){
     $code = $_SESSION["code"];
 }else{
     header("Location: index.php?role=student");
+    die();
 }
 ?>
 <html lang="en">
@@ -15,7 +16,7 @@ if(isset($_SESSION["code"])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>Home</title>
+    <title>Testovanie</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,6 +24,7 @@ if(isset($_SESSION["code"])){
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js"></script>
     <script src="script/fetch_functions.js"></script>
     <script src="script/start_test.js"></script>
     <script defer src="script/page_visibility.js"></script>
@@ -56,5 +58,6 @@ if(isset($_SESSION["code"])){
         </main>
     </div>
 </div>
+<script src="https://unpkg.com/mathlive/dist/mathlive.min.js"></script>
 </body>
 </html>

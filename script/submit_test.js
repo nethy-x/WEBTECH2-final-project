@@ -19,7 +19,6 @@ document.getElementById("Submit-Test").addEventListener("click", function () {
     console.log(Json1);
 
     /*-------------*/
-
     let questions2 = document.querySelectorAll(".question2");
 
     let Json2 = {};
@@ -82,6 +81,7 @@ document.getElementById("Submit-Test").addEventListener("click", function () {
     console.log(Json4);
 
     /*----------*/
+
 
 
 

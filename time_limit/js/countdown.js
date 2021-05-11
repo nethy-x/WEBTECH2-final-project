@@ -1,21 +1,8 @@
 var countDWN = document.getElementById("time");
 
-function downcount(a) {
+function downcount() {
     countDWN.removeEventListener("DOMSubtreeModified", downcount);
-    a.preventDefault();
-    $.ajax({
-        url: "https://wt69.fei.stuba.sk/test123/time_limit/countdown.php",
-        type: "GET",
-        data: {
-           time: "set",
-           limit: countDWN.innerHTML
-        },
-        success: function(data) {
-            console.log(data);
-            //countDWN.innerHTML = data["time"];
-        }
-        
-    })
+
     var time = countDWN.innerHTML;
     var splitTime = time.split(":");
     var timeToEpoch = (parseInt(splitTime[0]) * 3600 + parseInt(splitTime[1]) * 60 + parseInt(splitTime[2]));
@@ -39,6 +26,9 @@ function downcount(a) {
         }
         // If the count down is finished, write some text
         //1000 ms
+        if (distance <= 10000) {
+            countDWN.style.color = "red";
+        }
         if (distance <= 1000) {
             clearInterval(x);
             $('#testFinished').modal('toggle');
@@ -60,6 +50,13 @@ function downcount(a) {
 
 countDWN.addEventListener("DOMSubtreeModified", downcount);
 
+$('#closeMD').on('click', function(){
+    $('#testFinished').modal('hide');
+})
+
+$('#closeModal').on('click', function(){
+    $('#testFinished').modal('hide');
+})
 
 $('#testFinished').on('hidden.bs.modal', function () {
     window.location.assign("logout.php");

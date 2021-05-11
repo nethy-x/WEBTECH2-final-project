@@ -1,18 +1,29 @@
+<?php
+session_start();
+if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
+    $id =  $_SESSION["id"];
+    $email =  $_SESSION["username"];
+}else{
+    header("Location: index.php?role=professor");
+    die();
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>New Test</title>
+    <title>Testovanie</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom-style/new-test.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
-    <script src="js/bootstrap.bundle.min.js" ></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="">New test</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.php">Profesor</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="logout.php">Odhlásiť sa</a>
@@ -27,36 +38,30 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="teacher_home.php">
-                            <span data-feather="home"></span>
                             Domov
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <span data-feather="file"></span>
+                        <a class="nav-link active" href="teacher_new_test.php">
                             Nový test
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="shopping-cart"></span>
-                            Details
+                        <a class="nav-link" href="teacher_detail.php">
+                            Detaily testov
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <span data-feather="users"></span>
                             Export
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="teacher_reports.php">
-                            <span data-feather="bar-chart-2"></span>
                             Reports
                         </a>
                     </li>
                 </ul>
-
             </div>
         </nav>
 
@@ -66,25 +71,21 @@
             </div>
             <div>
                 <label for="create-test"></label>
-                <input type="button" id="create-test" class="btn btn-primary" value="create new test" >
+                <input type="button" id="create-test" class="btn btn-primary" value="create new test">
             </div>
             <div id="target" style="display: none">
                 <form>
                     <div class="mt-3" id="question1-container">
                         <h2>Krátke odpovede</h2>
-                        <?php include "otazka/question_1.php"?>
+                        <?php include "otazka/question_1.php" ?>
                         <hr>
                     </div>
                     <div>
                         <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question1">
                     </div>
-<<<<<<< HEAD
                     <div class="mt-3" id="question2-container">
-=======
-                    <div class="mt-3 " id="question2-container">
->>>>>>> 3a6c54a6ee0d55b5d45c904ee7cd23d8a4cb4ee0
                         <h2>Viaceré odpovede</h2>
-                        <?php include "otazka/question_2.php"?>
+                        <?php include "otazka/question_2.php" ?>
                         <hr>
                     </div>
                     <div>
@@ -92,7 +93,7 @@
                     </div>
                     <div class="mt-3" id="question3-container">
                         <h2>Párovanie odpovedí</h2>
-                        <?php include "otazka/question_3.php"?>
+                        <?php include "otazka/question_3.php" ?>
                         <hr>
                     </div>
                     <div>
@@ -100,20 +101,20 @@
                     </div>
                     <div class="mt-3" id="question4-container">
                         <h2>Kreslenie</h2>
-                        <?php include "otazka/question_4.php"?>
+                        <?php include "otazka/question_4.php" ?>
                         <hr>
                     </div>
-<!--                    <div>-->
-<!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question4">-->
-<!--                    </div>-->
+                    <!--                    <div>-->
+                    <!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question4">-->
+                    <!--                    </div>-->
                     <div class="mt-3" id="question5-container">
                         <h2>Matematická otázka</h2>
-                        <?php include "otazka/question_5.php"?>
+                        <?php include "otazka/question_5.php" ?>
                         <hr>
                     </div>
-<!--                    <div>-->
-<!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question5">-->
-<!--                    </div>-->
+                    <!--                    <div>-->
+                    <!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question5">-->
+                    <!--                    </div>-->
                     <div>
                         <input class="btn btn-dark" type="button" value="Submit" id="Submit-Test">
                     </div>
@@ -127,12 +128,7 @@
 <script src="otazka/script/question_2_script.js"></script>
 <script src="otazka/script/question_3_script.js"></script>
 <script src="otazka/script/question_4_script.js"></script>
-<<<<<<< HEAD
-<script src='otazka/script/question_5_script.js'></script>";
-
-=======
 <script src='otazka/script/question_5_script.js'></script>
->>>>>>> 3a6c54a6ee0d55b5d45c904ee7cd23d8a4cb4ee0
 <script src="script/fetch_functions.js"></script>
 <script src="script/create_test.js"></script>
 <script src="script/submit_test.js"></script>

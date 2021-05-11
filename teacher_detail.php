@@ -1,11 +1,11 @@
 <?php
-require_once(__DIR__ . "/classes/controllers/ProfessorController.php");
+require_once(__DIR__ . "/classes/controllers/TestController.php");
 session_start();
 if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
     $id =  $_SESSION["id"];
     $email =  $_SESSION["username"];
-    $professorController = new ProfessorController();
-    $name = $professorController->getNameSurnameByEmail($email);
+    $testController = new TestController();
+    $tests = $testController->getIdCodeByProfessor($id);
 }else{
     header("Location: index.php?role=professor");
     die();
@@ -42,7 +42,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
+                        <a class="nav-link" href="#">
                             Domov
                         </a>
                     </li>
@@ -52,7 +52,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="teacher_detail.php">
+                        <a class="nav-link active" aria-current="page" href="teacher_detail.php">
                             Detaily testov
                         </a>
                     </li>
@@ -67,18 +67,55 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                         </a>
                     </li>
                 </ul>
+
             </div>
         </nav>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Vítajte <?php echo $name?>!</h1>
+                <h1 class="h2">Vami vytvorené testy</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2">
                         <button type="button" class="btn btn-sm btn-outline-secondary">Test in progress</button>
                         <button type="button" class="btn btn-sm btn-outline-secondary">Planned test</button>
                     </div>
                 </div>
+            </div>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Kód testu</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        foreach ($tests as $test){
+                            echo "<tr>".
+                                    "<td>".
+                                        $test['id'].
+                                    "</td>".
+                                    "<td>".
+                                        $test['code'].
+                                    "</td>".
+                                    "<td>".
+                                        "<a href='test_detail.php?code=".$test['code']."'><button class='btn btn-dark'>Detail</button></a>".
+                                    "</td>".
+                                    "<td>".
+                                        "<a href='#'><button class='btn btn-dark'>Export testu</button></a>".
+                                    "</td>".
+                                    "<td>".
+                                        "<a href='#'><button class='btn btn-dark'>Export hodnotenia</button></a>".
+                                    "</td>".
+                                "</tr>";
+                        }
+                    ?>
+                    </tbody>
+                </table>
             </div>
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
                 <div class="toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true">
@@ -92,13 +129,6 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                     </div>
                 </div>
             </div>
-                <!--
-                TODO
-                -->
-                <?php
-
-
-                ?>
         </main>
     </div>
 </div>

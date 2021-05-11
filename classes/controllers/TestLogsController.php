@@ -34,11 +34,12 @@ class TestLogsController
         }
     }
 
-    public function getAllByTestId($test_id)
+    public function getAllByTestId($test_id,$tracker)
     {
-        $stm = $this->conn->prepare("SELECT student_id, tracker FROM test_logs WHERE test_id=:test_id");
+        $stm = $this->conn->prepare("SELECT student_id, tracker FROM test_logs WHERE test_id=:test_id and tracker=:tracker");
 
         $stm->bindParam(":test_id", $test_id);
+        $stm->bindParam(":tracker", $tracker);
         $stm->execute();
         $result = $stm->fetchAll();
         return ($result == false ? false : $result);

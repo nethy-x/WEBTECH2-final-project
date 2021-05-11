@@ -19,7 +19,8 @@ class TestLogsController
         $result = $stm->fetch();
         return ($result == false ? false : $result["tracker"]);
     }
-    public function updateTracker($student_id,$tracker)
+
+    public function updateTracker($student_id, $tracker)
     {
         $stm = $this->conn->prepare("UPDATE test_logs SET tracker=:tracker WHERE student_id=:student_id");
 
@@ -32,6 +33,7 @@ class TestLogsController
             return false;
         }
     }
+
     public function getAllByTestId($test_id)
     {
         $stm = $this->conn->prepare("SELECT student_id, tracker FROM test_logs WHERE test_id=:test_id");
@@ -40,5 +42,19 @@ class TestLogsController
         $stm->execute();
         $result = $stm->fetchAll();
         return ($result == false ? false : $result);
+    }
+
+    public function getTestDetail($test_id)
+    {
+        $stm = $this->conn->prepare("SELECT * FROM test_logs WHERE test_id=:test_id");
+
+        try {
+            $stm->bindParam(":test_id", $test_id);
+            $stm->execute();
+            $result = $stm->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }

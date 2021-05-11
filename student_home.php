@@ -8,6 +8,7 @@ if(isset($_SESSION["code"])){
     $code = $_SESSION["code"];
 }else{
     header("Location: index.php?role=student");
+    die();
 }
 ?>
 <html lang="en">
@@ -15,7 +16,7 @@ if(isset($_SESSION["code"])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>Home</title>
+    <title>Testovanie</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 

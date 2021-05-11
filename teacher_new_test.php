@@ -107,9 +107,9 @@
                         <?php include "otazka/question_5.php"?>
                         <hr>
                     </div>
-<!--                    <div>-->
-<!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question5">-->
-<!--                    </div>-->
+                    <div>
+                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question5">
+                    </div>
                     <div>
                         <input class="btn btn-dark" type="button" value="Submit" id="Submit-Test">
                     </div>
@@ -127,4 +127,5 @@
 <script src="script/fetch_functions.js"></script>
 <script src="script/create_test.js"></script>
 <script src="script/submit_test.js"></script>
+<script src="https://unpkg.com/mathlive/dist/mathlive.min.js"></script>
 </html>

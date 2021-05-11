@@ -19,4 +19,14 @@ class ProfessorController
         $result = $stm->fetch();
         return ($result == false ? false : $result["id"]);
     }
+
+    public function getNameSurnameByEmail($email)
+    {
+        $stm = $this->conn->prepare("SELECT name, surname FROM professor WHERE email=:email");
+        $stm->bindParam(":email", $email);
+        $stm->execute();
+        $result = $stm->fetch();
+        return ($result == false ? false : $result["name"] . " " . $result["surname"]);
+
+    }
 }

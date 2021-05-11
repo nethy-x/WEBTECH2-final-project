@@ -1,8 +1,19 @@
+<?php
+session_start();
+if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
+    $id =  $_SESSION["id"];
+    $email =  $_SESSION["username"];
+}else{
+    header("Location: index.php?role=professor");
+    die();
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Notifikácie</title>
+    <title>Testovanie</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -15,7 +26,7 @@
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.php">Home</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.php">Profesor</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="logout.php">Odhlásiť sa</a>
@@ -30,31 +41,26 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link" href="teacher_home.php">
-                            <span data-feather="home"></span>
                             Domov
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="teacher_new_test.php">
-                            <span data-feather="file"></span>
                             Nový test
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="shopping-cart"></span>
-                            Details
+                        <a class="nav-link" href="teacher_detail.php">
+                            Detaily testov
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <span data-feather="users"></span>
                             Export
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  active" aria-current="page" href="#">
-                            <span data-feather="bar-chart-2"></span>
+                        <a class="nav-link  active" aria-current="page" href="teacher_reports.php">
                             Reports
                         </a>
                     </li>

@@ -34,6 +34,12 @@ document.getElementById("create-test").addEventListener("click", function () {
         addQuestion3Answer();
         question3id++;
     });
+    const newQuestion5 = document.getElementById("new-question5");
+    newQuestion5.addEventListener("click", () => {
+        question5Container.innerHTML += addMathQuestion(question5id);
+        addQuestion5Answers(question5id);
+        question5id++;
+    });
 
 });
 

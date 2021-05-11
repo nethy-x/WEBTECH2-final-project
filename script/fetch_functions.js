@@ -40,8 +40,8 @@ function fetchTest(element){
                 }*/
 
                 console.log(data.test);
-                //query_question_1(data,element)
-                //query_question_2(data,element)
+                query_question_1(data,element);
+                query_question_2(data,element);
                 query_question_3(data,element);
 
             } else {

@@ -32,17 +32,18 @@ function getNotification() {
                 console.log("error");
             }
         });
+}
 
-function addCloseListener(){
+function addCloseListener() {
     let buttons = document.querySelectorAll(".btn-close");
-    buttons.forEach((item) =>{
-        item.addEventListener("click",()=>{
+    buttons.forEach((item) => {
+        item.addEventListener("click", () => {
             item.parentElement.parentElement.remove();
         })
     })
 }
 
-function addToast(parent, name, id, code){
+function addToast(parent, name, id, code) {
     parent.innerHTML += "    <div class=\"toast mt-1\" role=\"alert\" aria-live=\"assertive\" aria-atomic=\"true\">\n" +
         "        <div class=\"toast-header\">\n" +
         "            <strong class=\"me-auto\">Alt+Tab tracker</strong>\n" +
@@ -55,17 +56,17 @@ function addToast(parent, name, id, code){
         "    </div>";
 }
 
-function addCloseListener(){
+function addCloseListener() {
     let buttons = document.querySelectorAll(".btn-close");
-    buttons.forEach((item) =>{
-        item.addEventListener("click",()=>{
+    buttons.forEach((item) => {
+        item.addEventListener("click", () => {
             item.parentElement.parentElement.remove();
         })
     })
 }
 
 
-function addToast(parent, name, id, code){
+function addToast(parent, name, id, code) {
     parent.innerHTML += "    <div class=\"toast mt-1\" role=\"alert\" aria-live=\"assertive\" aria-atomic=\"true\">\n" +
         "        <div class=\"toast-header\">\n" +
         "            <strong class=\"me-auto\">Alt+Tab tracker</strong>\n" +

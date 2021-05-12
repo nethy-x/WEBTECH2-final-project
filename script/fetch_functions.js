@@ -13,10 +13,13 @@ function fetchDefineTest(test) {
     fetch(request)
         .then((response) => response.json())
         .then((data) => {
+            const fetch_response = document.getElementById("fetch-response");
             if (!data.error) {
-                console.log(data.id);
+                fetch_response.style.color = "green";
+                fetch_response.innerText = data.message;
             } else {
-                console.log("error");
+                fetch_response.style.color = "red";
+                fetch_response.innerText = data.message;
             }
         });
 }

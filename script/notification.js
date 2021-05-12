@@ -77,3 +77,4 @@ function addToast(parent, name, id, code){
         "        </div>\n" +
         "    </div>";
 }
+}

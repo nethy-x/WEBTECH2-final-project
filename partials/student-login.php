@@ -63,6 +63,7 @@
                     document.getElementById("login").style.display = "block";
                     document.getElementById("code").style.borderColor = "green";
                 }
+                document.querySelector(".error-text").innerHTML = "";
             },
         })
     });

@@ -21,15 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['role'] = "professor";
                 header("Location: ../teacher_home.php");
-
-//                die();
+                die();
             } else {
                 header("Location: ../index.php?role=professor&loginError=2");
-//                die();
+                die();
             }
         } else {
             header("Location: ../index.php?role=professor&loginError=1");
-//            die();
+            die();
         }
     }
 }

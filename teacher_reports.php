@@ -23,7 +23,11 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 
+
+
+
     <script src="script/notification.js"></script>
+
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -88,7 +92,9 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                     </div>
                 </div>
             </div>
+
             <?php include("partials/notification-html.php")?>
+
         </main>
     </div>
 </div>

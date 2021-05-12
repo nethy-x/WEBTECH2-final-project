@@ -21,13 +21,21 @@ if(isset($_SESSION["code"])){
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
+    <!--    JQUERY-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!--    -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js"></script>
+
     <script src="script/fetch_functions.js"></script>
     <script src="script/start_test.js"></script>
     <script defer src="script/page_visibility.js"></script>
+    <script src="script/sortable/sortable_script.js"></script>
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">

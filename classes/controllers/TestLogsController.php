@@ -35,6 +35,7 @@ class TestLogsController
         }
     }
 
+
     public function updateSent($student_id, $test_id, $sent)
     {
         $stm = $this->conn->prepare("UPDATE test_logs SET sent=:sent WHERE student_id=:student_id AND test_id = :test_id");
@@ -54,6 +55,7 @@ class TestLogsController
         $stm = $this->conn->prepare("SELECT * FROM test_logs WHERE test_id=:test_id and tracker=:tracker and sent='false'");
 
         $stm->bindParam(":test_id", $test_id, PDO::PARAM_INT);
+
         $stm->bindParam(":tracker", $tracker);
         $stm->execute();
         $result = $stm->fetchAll();

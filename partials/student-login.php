@@ -50,7 +50,7 @@
         var code = document.getElementById("code");
         e.preventDefault();
         $.ajax({
-            url: "validate.php",
+            url: "api/validate.php",
             type: "get",
             data: {
                 code: code.value

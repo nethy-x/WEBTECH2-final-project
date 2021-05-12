@@ -15,29 +15,14 @@ document.getElementById("submit_test").addEventListener("click",function (){
     let mathAnswerFromForm5 = document.getElementsByClassName("mathAnswer");
 
 
-
-
     let question1 = {};
     let question2 = {};
     let question3 = {};
     let question5 = {};
 
-    Array.from(questionFromForm3).forEach(function (question,questionIndex){
-        let tmp = {}
-
-        Array.from(leftAnswerFromInput3).forEach(function (leftAnswer,leftAnswerIndex){
-            if(question.id.split("_")[1] === leftAnswer.id.split("_")[1]){
-                tmp[leftAnswer.innerHTML] = rightAnswerFromInput3[leftAnswerIndex].innerHTML;
-            }
-        })
-        question3[question.innerHTML+"_"+questionIndex] = tmp;
-        tmp = {};
-    });
-
     Array.from(answerFromForm1).forEach(function (item,index){
-       question1[questionFromForm1[index].innerHTML] =  answerFromForm1[index].value;
+        question1[questionFromForm1[index].innerHTML] =  answerFromForm1[index].value;
     })
-
 
     Array.from(questionFromForm2).forEach(function (question,questionIndex){
         let answerIteratorForJsonKey = 0;
@@ -56,7 +41,17 @@ document.getElementById("submit_test").addEventListener("click",function (){
         question2[question.innerHTML] = tmp;
         tmp = {};
         answerIteratorForJsonKey = 0;
+    });
 
+    Array.from(questionFromForm3).forEach(function (question,questionIndex){
+        let tmp = {}
+        Array.from(leftAnswerFromInput3).forEach(function (leftAnswer,leftAnswerIndex){
+            if(question.id.split("_")[1] === leftAnswer.id.split("_")[1]){
+                tmp[leftAnswer.innerHTML] = rightAnswerFromInput3[leftAnswerIndex].innerHTML;
+            }
+        })
+        question3[question.innerHTML+"_"+questionIndex] = tmp;
+        tmp = {};
     });
 
    Array.from(questionFromForm5).forEach(function (item,index){
@@ -65,6 +60,7 @@ document.getElementById("submit_test").addEventListener("click",function (){
            tmp[mathQuestionFromForm5[index].value] = mathAnswerFromForm5[index].value;
        }
        question5[item.innerHTML+"_"+index] = tmp;
+       //TODO odstranit indexovanie
    })
 
     let JSON1 = {"question1":question1};
@@ -72,10 +68,30 @@ document.getElementById("submit_test").addEventListener("click",function (){
     let JSON3 = {"question3":question3};
     let JSON5 = {"question5":question5};
     let FinalJson = {JSON1,JSON2,JSON3,JSON5};
-    console.log(FinalJson);
 
-
-
-
+    fetchDefineTest(FinalJson);
 })
+
+function fetchDefineTest(test) {
+    let url = "api/evaluation/evaluateApi.php";
+    let request = new Request(url, {
+        method: 'POST',
+        body: JSON.stringify({
+            test: test
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    });
+
+    fetch(request)
+        .then((response) => response.json())
+        .then((data) => {
+            if (!data.error) {
+                console.log(data)
+            } else {
+
+            }
+        });
+}
 

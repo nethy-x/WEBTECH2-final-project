@@ -179,14 +179,14 @@ function query_question_3(data, element) {
     target_div_for_all_question_type_3.append(tmp_header_for_identify_queried_questions);
 
     target_div_for_all_question_type_3.classList.add("bg-light");
-
+    let question_iterator = 0;
     for (let i in data.test.Json3) {
         let target_div_for_question = document.createElement("div");
         target_div_for_question.classList.add("col-md-8")
         target_div_for_question.style.padding = "25px"
 
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-            "<p style='text-align: center'>" + data.test.Json3[i].question + "</p>";
+            "<p style='text-align: center' id='question2_"+question_iterator+"'> " + data.test.Json3[i].question + "</p>";
 
         let divForFlexStyle = document.documentElement;
         let divForLeftAnswer = document.documentElement;
@@ -197,7 +197,7 @@ function query_question_3(data, element) {
 
         divForRightAnswer = document.createElement("div");
         divForRightAnswer.classList.add("col-md-6");
-
+        let answerIterator = 0;
         for (let key in data.test.Json3[i].answer) {
             divForFlexStyle = document.createElement("div")
             divForFlexStyle.classList.add("d-flex");
@@ -208,19 +208,23 @@ function query_question_3(data, element) {
             left_answer.classList.add("left_answer");
             left_answer.style.marginRight = "25%"
             left_answer.classList.add("d-flex");
+            left_answer.id ="question2_leftAnswer_"+question_iterator+"_"+answerIterator
 
             let right_answer = document.createElement("p");
             right_answer.classList.add("right_answer");
             right_answer.classList.add("form-control");
             right_answer.classList.add("p-2");
             right_answer.classList.add("d-flex");
-
+            left_answer.id ="question2_rightAnswer_"+question_iterator+"_"+answerIterator
             left_answer.innerHTML = key
             right_answer.innerHTML = data.test.Json3[i].answer[key];
 
             divForLeftAnswer.append(left_answer);
             divForRightAnswer.append(right_answer);
+            answerIterator++;
         }
+        answerIterator = 0;
+        question_iterator++;
         divForFlexStyle.append(divForLeftAnswer);
         divForFlexStyle.append(divForRightAnswer);
         target_div_for_question.append(divForFlexStyle);

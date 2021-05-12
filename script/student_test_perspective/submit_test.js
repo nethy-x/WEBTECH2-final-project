@@ -22,7 +22,7 @@ document.getElementById("submit_test").addEventListener("click",function (){
                 Array.from(checkboxFromForm2).forEach(function(checkbox,xIndex){
                     if(answer.id.split("_")[2] === checkboxFromForm2[xIndex].id.split("_")[2]){
 
-                            tmp[checkboxFromForm2[answerIndex].checked + "_"+questionIndex+"_"+answerIteratorForJsonKey] = answer.innerHTML;
+                        tmp[answer.innerHTML] = checkboxFromForm2[answerIndex].checked;
                     }
                 })
                 answerIteratorForJsonKey++;

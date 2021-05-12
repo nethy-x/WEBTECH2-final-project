@@ -1,17 +1,24 @@
 document.getElementById("submit_test").addEventListener("click",function (){
-    let question1 = document.getElementsByClassName("question1_answer");
+    let questionFromForm1 = document.getElementsByClassName("question1_question");
+    let answerFromForm1 = document.getElementsByClassName("question1_answer");
+    let questionFromForm2 = document.getElementsByClassName("question2_question");
+    let answerFromForm2 = document.getElementsByClassName("question2_answer");
+    let checkboxFromForm2 = document.getElementsByClassName("checkbox2_answer");
 
-    let answer1 = {}
-    let JSON1 = {}
+    let question1 = {};
+    let question2 = {};
 
-    Array.from(question1).forEach(function (item,index){
-        /*let cnt_question = "question"+index+1;
-        JSON1 = {cnt_question :answer1[index] = item.value.toString()};*/
+    Array.from(answerFromForm1).forEach(function (item,index){
+       question1[questionFromForm1[index].innerHTML] =  answerFromForm1[index].value;
     })
 
+    let JSON1 = {"question1":question1};
+    let JSON2 = {"question2":question2};
+    let tmp = {JSON1,JSON2};
+    console.log(tmp);
 
-    console.log(JSON1);
 
+    /*
     let question2 = document.getElementsByClassName("question2_answer");
     let checkbox2 = document.getElementsByClassName("checkbox2_answer");
     let checked_answer = {}
@@ -38,7 +45,7 @@ document.getElementById("submit_test").addEventListener("click",function (){
     });
 
     let answer2={"question2":checked_answer,unchecked_answer};
-
+*/
 
 })
 

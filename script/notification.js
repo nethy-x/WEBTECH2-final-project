@@ -2,6 +2,7 @@ window.setInterval(function () {
     getNotification()
 }, 3000);
 
+
 function getNotification() {
     let url = "api/notificationApi.php";
     let request = new Request(url, {
@@ -11,10 +12,12 @@ function getNotification() {
         }
     });
 
+
     fetch(request)
         .then((response) => response.json())
         .then((data) => {
             if (!data.error) {
+
                 const notification_container = document.getElementById("notification-container");
                 let test = data.test;
                 console.log(test)
@@ -28,15 +31,17 @@ function getNotification() {
                 });
                 $(".toast").toast("show");
                 addCloseListener();
+
             } else {
                 console.log("error");
             }
         });
+}
 
-function addCloseListener(){
+function addCloseListener() {
     let buttons = document.querySelectorAll(".btn-close");
-    buttons.forEach((item) =>{
-        item.addEventListener("click",()=>{
+    buttons.forEach((item) => {
+        item.addEventListener("click", () => {
             item.parentElement.parentElement.remove();
         })
     })
@@ -76,5 +81,4 @@ function addToast(parent, name, id, code){
         `            ${name} s ID ${id} opustil tab testu s kódom ${code}.\n` +
         "        </div>\n" +
         "    </div>";
-}
 }

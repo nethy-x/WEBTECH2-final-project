@@ -19,7 +19,7 @@ if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
     }
 
     $testController = new TestController();
-    $test_id = $testController->insertTest($professor_id, $test_code, $test_json);
+    $test_id = $testController->insertTest($professor_id, $test_code, $test_json, null, "inactive");
     if($test_id == false){
         $response = array("error" => true, "message" => "Chyba počas vytvárania testu");
         echo json_encode($response);

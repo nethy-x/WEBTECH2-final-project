@@ -105,7 +105,7 @@ function query_question_1(data, element) {
         target_div_for_question.style.padding = "25px"
 
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-            "<p style='text-align: center'>" + data.test.Json1[i].question + "</p>";
+            "<p style='text-align: center' class='question1_question'>" + data.test.Json1[i].question + "</p>";
 
 
 
@@ -133,16 +133,16 @@ function query_question_2(data, element) {
 
     target_div_for_all_question_type_2.classList.add("bg-light");
 
+    let question_iterator = 0;
     for (let i in data.test.Json2) {
         let target_div_for_question = document.createElement("div");
         target_div_for_question.classList.add("col-md-4")
         target_div_for_question.style.padding = "25px"
 
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-            "<p style='text-align: center'>" + data.test.Json2[i].question + "</p>";
+            "<p style='text-align: center' id='question2_"+question_iterator+"' class='question2_question>" + data.test.Json2[i].question + "</p>";
 
-
-        let iterator = 0;
+        let answerIterator = 0;
         for(let j in data.test.Json2[i].answer){
             let divForFlexStyle = document.createElement("div")
             divForFlexStyle.classList.add("d-flex");
@@ -152,21 +152,23 @@ function query_question_2(data, element) {
             answer.classList.add("form-control");
             answer.classList.add("p-2");
             answer.classList.add("d-flex");
-            answer.classList.add("question_2_answer")
-            answer.id = "q2_"+iterator;
+            answer.classList.add("question2_answer")
+            answer.id = "question2_"+question_iterator+"_"+answerIterator;
             answer.innerHTML = data.test.Json2[i].answer[j];
 
             checkbox.type = "checkbox";
             checkbox.classList.add("m-2")
-            checkbox.classList.add("checkbox_2_answer")
-            checkbox.id = "ch2_"+iterator;
+            checkbox.classList.add("checkbox2_answer")
+            checkbox.id = "checkbox2_"+question_iterator+"_"+answerIterator;
 
-            iterator++;
+            answerIterator++;
 
             divForFlexStyle.append(answer);
             divForFlexStyle.append(checkbox);
             target_div_for_question.append(divForFlexStyle);
         }
+        answerIterator = 0;
+        question_iterator++;
         target_div_for_all_question_type_2.append(target_div_for_question);
     }
     element.append(target_div_for_all_question_type_2)
@@ -180,42 +182,56 @@ function query_question_3(data, element) {
     target_div_for_all_question_type_3.append(tmp_header_for_identify_queried_questions);
 
     target_div_for_all_question_type_3.classList.add("bg-light");
-
+    let question_iterator = 0;
     for (let i in data.test.Json3) {
         let target_div_for_question = document.createElement("div");
         target_div_for_question.classList.add("col-md-8")
         target_div_for_question.style.padding = "25px"
 
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-            "<p style='text-align: center'>" + data.test.Json3[i].question + "</p>";
+            "<p style='text-align: center' id='question2_"+question_iterator+"'> " + data.test.Json3[i].question + "</p>";
 
+        let divForFlexStyle = document.documentElement;
+        let divForLeftAnswer = document.documentElement;
+        let divForRightAnswer = document.documentElement;
 
+        divForLeftAnswer = document.createElement("div");
+        divForLeftAnswer.classList.add("col-md-6");
+
+        divForRightAnswer = document.createElement("div");
+        divForRightAnswer.classList.add("col-md-6");
+        let answerIterator = 0;
         for (let key in data.test.Json3[i].answer) {
-            let divForFlexStyle = document.createElement("div")
+            divForFlexStyle = document.createElement("div")
             divForFlexStyle.classList.add("d-flex");
 
             let left_answer = document.createElement("p");
             left_answer.classList.add("form-control");
             left_answer.classList.add("p-2");
             left_answer.classList.add("left_answer");
-
             left_answer.style.marginRight = "25%"
             left_answer.classList.add("d-flex");
+            left_answer.classList.add("sortable");
+            left_answer.id ="question2_leftAnswer_"+question_iterator+"_"+answerIterator
 
             let right_answer = document.createElement("p");
             right_answer.classList.add("right_answer");
             right_answer.classList.add("form-control");
             right_answer.classList.add("p-2");
             right_answer.classList.add("d-flex");
-
+            left_answer.id ="question2_rightAnswer_"+question_iterator+"_"+answerIterator
             left_answer.innerHTML = key
             right_answer.innerHTML = data.test.Json3[i].answer[key];
 
-            // console.log(data.test.Json3[i].answer)
-            divForFlexStyle.append(left_answer);
-            divForFlexStyle.append(right_answer);
-            target_div_for_question.append(divForFlexStyle);
+            divForLeftAnswer.append(left_answer);
+            divForRightAnswer.append(right_answer);
+            answerIterator++;
         }
+        answerIterator = 0;
+        question_iterator++;
+        divForFlexStyle.append(divForLeftAnswer);
+        divForFlexStyle.append(divForRightAnswer);
+        target_div_for_question.append(divForFlexStyle);
         target_div_for_all_question_type_3.append(target_div_for_question);
     }
     element.append(target_div_for_all_question_type_3)
@@ -264,7 +280,7 @@ function query_question_5(data, element) {
 
     target_div_for_all_question_type_5.classList.add("bg-light");
 
-
+    let iterator = 0;
     for(let i in data.test.Json5){
         let target_div_for_question = document.createElement("div");
         target_div_for_question.classList.add("col-md-4")
@@ -274,13 +290,18 @@ function query_question_5(data, element) {
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
             "<p style='text-align: center'>"+data.test.Json5[i].question+"</p>";
 
-            let question = document.createElement("math-field");
+
+            let question = new MathfieldElement();
+            question.setOptions({
+            readOnly: true,
+            });
             question.style.fontSize = "32px";
             question.style.padding = "8px";
             question.style.borderRadius = "8px";
             question.style.border = "1px solid black";
-            question.style.boxShadow = "0 0 8px rgba(0,0,0,.2";
-            question.innerHTML = data.test.Json5[i]["question-math"];
+            question.style.boxShadow = "0 0 8px rgba(0,0,0,.2)";
+            question.value = data.test.Json5[i]["question-math"];
+
 
             let answer = document.createElement("math-field");
 
@@ -290,6 +311,8 @@ function query_question_5(data, element) {
             answer.style.borderRadius = "8px";
             answer.style.border = "1px solid black";
             answer.style.boxShadow = "0 0 8px rgba(0,0,0,.2)";
+            answer.id = "q_5"+iterator.toString();
+            iterator++;
 
             target_div_for_question.append(question);
             target_div_for_question.append(answer);

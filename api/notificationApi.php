@@ -37,6 +37,7 @@ if (isset($_SESSION['id'])) {
         $response["test"][$test_code] = $test_array;
 //        $response["test"]["test_code"] = array($test_code => $test_array);
     }
+
     echo json_encode($response);
 } else {
     $response = array("error" => true, "message" => "Code not set");

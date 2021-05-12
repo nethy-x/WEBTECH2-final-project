@@ -74,20 +74,6 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Zoznam ALT+TABerov</h1>
             </div>
-
-
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <strong class="me-auto">Alt+Tab tracker</strong>
-                        <small class="text-muted">just now</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div id="notification-body" class="toast-body">
-                        Niekto opustil tab.
-                    </div>
-                </div>
-            </div>
             <?php include("partials/notification-html.php")?>
         </main>
     </div>

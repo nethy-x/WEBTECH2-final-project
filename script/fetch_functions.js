@@ -13,10 +13,13 @@ function fetchDefineTest(test) {
     fetch(request)
         .then((response) => response.json())
         .then((data) => {
+            const fetch_response = document.getElementById("fetch-response");
             if (!data.error) {
-                console.log(data.id);
+                fetch_response.style.color = "green";
+                fetch_response.innerText = data.message;
             } else {
-                console.log("error");
+                fetch_response.style.color = "red";
+                fetch_response.innerText = data.message;
             }
         });
 }
@@ -137,7 +140,7 @@ function query_question_2(data, element) {
         target_div_for_question.style.padding = "25px"
 
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-            "<p style='text-align: center' id='question2_"+question_iterator+"' class='question2_question>" + data.test.Json2[i].question + "</p>";
+            "<p style='text-align: center' id='question2_"+question_iterator+"' class='question2_question'>" + data.test.Json2[i].question + "</p>";
 
         let answerIterator = 0;
         for(let j in data.test.Json2[i].answer){

@@ -117,7 +117,7 @@ $studentController = new StudentController();
                     <tbody>
                     <?php
                     foreach ($test_detail as $test_log) {
-                        if(!isset($test_log["student_id"])){
+                        if (!isset($test_log["student_id"])) {
                             $test_log["student_id"] = -1;
                         }
                         $name_surname = $studentController->getNameById($test_log["student_id"]);
@@ -153,20 +153,7 @@ $studentController = new StudentController();
                     </tbody>
                 </table>
             </div>
-
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-                <div class="toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <strong class="me-auto">Alt+Tab tracker</strong>
-                        <small class="text-muted">just now</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div id="notification-body" class="toast-body">
-                        Niekto opustil tab.
-                    </div>
-                </div>
-            </div>
-            <?php include("partials/notification-html.php")?>
+            <?php include("partials/notification-html.php") ?>
         </main>
     </div>
 </div>

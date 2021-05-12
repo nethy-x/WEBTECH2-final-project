@@ -37,6 +37,9 @@ if (isset($_SESSION['role'])) {
     <div class="row">
         <main class="col px-md-4">
             <div class="flex-row d-flex justify-content-center">
+                <script>
+                    localStorage.clear();
+                </script>
                 <?php
                 include __DIR__ . "/partials/page-login.php";
                 ?>

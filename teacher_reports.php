@@ -1,12 +1,14 @@
 <?php
 session_start();
-if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
-    $id =  $_SESSION["id"];
-    $email =  $_SESSION["username"];
-}else{
+if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+    $email = $_SESSION["username"];
+} else {
     header("Location: index.php?role=professor");
     die();
 }
+
+
 ?>
 
 <html lang="en">
@@ -20,7 +22,6 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
     <link href="css/dashboard.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-
 
 
 </head>
@@ -76,7 +77,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
 
 
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-                <div class="toast"  role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header">
                         <strong class="me-auto">Alt+Tab tracker</strong>
                         <small class="text-muted">just now</small>
@@ -87,27 +88,6 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                     </div>
                 </div>
             </div>
-
-            <div id="logs-div">
-                <table>
-                <thead>
-                <tr>
-                    <th>Meno</th>
-                    <th>Priezvisko</th>
-                    <th>Stav</th>
-                </tr>
-                </thead>
-                <tbody id="table-log">
-                    <script>
-                        var notificationTable = localStorage.getItem('notification');
-                        var logs = JSON.parse(notificationTable)
-                        logs.forEach((element, index) => {
-                            document.getElementById("table-log").innerHTML += "<tr>" + "<td>" + element["Meno"] +"</td>" + "<td>" + element["Priezvisko"] +"</td>" + "<td>" + element["Tracker"] +"</td>" + "</tr>"
-                        });</script>
-                </tbody>
-                </table>
-            </div>
-
 
             <!--
             TODO

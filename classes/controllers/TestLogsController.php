@@ -35,7 +35,6 @@ class TestLogsController
         }
     }
 
-
     public function updateSent($student_id, $test_id, $sent)
     {
         $stm = $this->conn->prepare("UPDATE test_logs SET sent=:sent WHERE student_id=:student_id AND test_id = :test_id");

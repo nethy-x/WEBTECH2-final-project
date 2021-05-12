@@ -1,7 +1,6 @@
 <?php
 require_once(__DIR__ . "/../classes/controllers/TestController.php");
 require_once(__DIR__ . "/../classes/controllers/TestLogsController.php");
-
 require_once(__DIR__ . "/../classes/controllers/StudentController.php");
 
 session_start();

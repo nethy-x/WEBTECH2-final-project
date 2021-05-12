@@ -59,7 +59,7 @@ if($student_name == false){
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
+                        <a class="nav-link" href="index.php">
                             Domov
                         </a>
                     </li>
@@ -69,7 +69,7 @@ if($student_name == false){
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="teacher_detail.php">
+                        <a class="nav-link active" aria-current="page" href="teacher_detail.php">
                             Detaily testov
                         </a>
                     </li>
@@ -97,25 +97,7 @@ if($student_name == false){
                     </div>
                 </div>
             </div>
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-                <div class="toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <strong class="me-auto">Alt+Tab tracker</strong>
-                        <small class="text-muted">just now</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div id="notification-body" class="toast-body">
-                        Niekto opustil tab.
-                    </div>
-                </div>
-            </div>
-            <!--
-            TODO
-            -->
-            <?php
-
-
-            ?>
+            <?php include("partials/notification-html.php")?>
         </main>
     </div>
 </div>

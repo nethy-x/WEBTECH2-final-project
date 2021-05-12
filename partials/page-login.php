@@ -1,7 +1,17 @@
 <div class="d-flex flex-column p-4 border rounded mt-5">
     <div id="login-container ">
         <div class="flex-row d-flex justify-content-center">
-            <?php include __DIR__ . "/form-login.php"; ?>
+            <?php
+            if (isset($_GET["role"])) {
+                if (strcmp($_GET["role"], "professor") == 0) {
+                    include __DIR__ . "/professor-login.php";
+                } else {
+                    include __DIR__ . "/student-login.php";
+                }
+            } else {
+                include __DIR__ . "/student-login.php";
+            }
+            ?>
         </div>
     </div>
     <div class="flex-row d-flex justify-content-center">
@@ -15,6 +25,12 @@
                         break;
                     case 2:
                         echo "Prihlásenie zlyhalo: Prosím skontrolujte svoje prihlasovací email a heslo";
+                        break;
+                    case 3:
+                        echo "Prihlásenie zlyhalo: Študent s daným ID už píše test";
+                        break;
+                    case 4:
+                        echo "Prihlásenie zlyhalo: Študent s daným ID už existuje, ale nezhoduje sa mu meno";
                         break;
                 }
             } else if (isset($_GET["registerError"])) {

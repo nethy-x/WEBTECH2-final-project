@@ -42,7 +42,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
+                        <a class="nav-link active" aria-current="page" href="index.php">
                             Domov
                         </a>
                     </li>
@@ -80,25 +80,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                     </div>
                 </div>
             </div>
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-                <div class="toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <strong class="me-auto">Alt+Tab tracker</strong>
-                        <small class="text-muted">just now</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div id="notification-body" class="toast-body">
-                        Niekto opustil tab.
-                    </div>
-                </div>
-            </div>
-                <!--
-                TODO
-                -->
-                <?php
-
-
-                ?>
+            <?php include("partials/notification-html.php")?>
         </main>
     </div>
 </div>

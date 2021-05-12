@@ -13,22 +13,22 @@ if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
     $professorController = new ProfessorController();
     $professor_id = $professorController->getIdByEmail($email);
     if($professor_id == false){
-        $response = array("error" => true, "message" => "Professor not logged in, or wrong id");
+        $response = array("error" => true, "message" => "Odhláste sa a prihláste sa");
         echo json_encode($response);
         die();
     }
 
     $testController = new TestController();
-    $test_id = $testController->insertTest($professor_id, $test_code, $test_json);
+    $test_id = $testController->insertTest($professor_id, $test_code, $test_json, null, "inactive");
     if($test_id == false){
-        $response = array("error" => true, "message" => "Fail during inserting test");
+        $response = array("error" => true, "message" => "Chyba počas vytvárania testu");
         echo json_encode($response);
         die();
     }
 
-    $response = array("error" => false, "message" => "Added new test with code $test_code");
+    $response = array("error" => false, "message" => "Test s kódom $test_code bol úspešne vytvorený");
     echo json_encode($response);
 }else{
-    $response = array("error" => true, "message" => "Panic error");
+    $response = array("error" => true, "message" => "Odhláste sa a prihláste sa");
     echo json_encode($response);
 }

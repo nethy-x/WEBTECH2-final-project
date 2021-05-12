@@ -188,16 +188,24 @@ function query_question_3(data, element) {
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
             "<p style='text-align: center'>" + data.test.Json3[i].question + "</p>";
 
+        let divForFlexStyle = document.documentElement;
+        let divForLeftAnswer = document.documentElement;
+        let divForRightAnswer = document.documentElement;
+
+        divForLeftAnswer = document.createElement("div");
+        divForLeftAnswer.classList.add("col-md-6");
+
+        divForRightAnswer = document.createElement("div");
+        divForRightAnswer.classList.add("col-md-6");
 
         for (let key in data.test.Json3[i].answer) {
-            let divForFlexStyle = document.createElement("div")
+            divForFlexStyle = document.createElement("div")
             divForFlexStyle.classList.add("d-flex");
 
             let left_answer = document.createElement("p");
             left_answer.classList.add("form-control");
             left_answer.classList.add("p-2");
             left_answer.classList.add("left_answer");
-
             left_answer.style.marginRight = "25%"
             left_answer.classList.add("d-flex");
 
@@ -210,11 +218,12 @@ function query_question_3(data, element) {
             left_answer.innerHTML = key
             right_answer.innerHTML = data.test.Json3[i].answer[key];
 
-            // console.log(data.test.Json3[i].answer)
-            divForFlexStyle.append(left_answer);
-            divForFlexStyle.append(right_answer);
-            target_div_for_question.append(divForFlexStyle);
+            divForLeftAnswer.append(left_answer);
+            divForRightAnswer.append(right_answer);
         }
+        divForFlexStyle.append(divForLeftAnswer);
+        divForFlexStyle.append(divForRightAnswer);
+        target_div_for_question.append(divForFlexStyle);
         target_div_for_all_question_type_3.append(target_div_for_question);
     }
     element.append(target_div_for_all_question_type_3)

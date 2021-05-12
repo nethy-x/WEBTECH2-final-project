@@ -1,5 +1,17 @@
-left_ansers = document.getElementsByClassName("left_answer");
-right_answers = document.getElementsByClassName("right_answer");
+$(function () {
+    var parent = $(".sortable");
+    parent.each((index, item)=>{
+        var divs = $(item).children();
+        console.log(divs);
+        while (divs.length) {
+            item.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+        }
+    })
 
-//console.log(left_ansers);
-//console.log(right_answers);
+    $(".sortable").sortable({
+        activate: function (event, ui) {
+        }
+    });
+
+
+});

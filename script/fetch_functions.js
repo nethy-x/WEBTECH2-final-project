@@ -197,29 +197,33 @@ function query_question_3(data, element) {
 
         divForLeftAnswer = document.createElement("div");
         divForLeftAnswer.classList.add("col-md-6");
+        divForLeftAnswer.classList.add("sortable");
+        divForLeftAnswer.classList.add("left");
+
 
         divForRightAnswer = document.createElement("div");
         divForRightAnswer.classList.add("col-md-6");
+        divForRightAnswer.classList.add("right");
         let answerIterator = 0;
+        divForFlexStyle = document.createElement("div")
+        divForFlexStyle.classList.add("d-flex");
         for (let key in data.test.Json3[i].answer) {
-            divForFlexStyle = document.createElement("div")
-            divForFlexStyle.classList.add("d-flex");
+
 
             let left_answer = document.createElement("p");
             left_answer.classList.add("form-control");
             left_answer.classList.add("p-2");
-            left_answer.classList.add("left_answer");
+            left_answer.classList.add("left_answer_"+question_iterator);
             left_answer.style.marginRight = "25%"
             left_answer.classList.add("d-flex");
-            left_answer.classList.add("sortable");
-            left_answer.id ="question2_leftAnswer_"+question_iterator+"_"+answerIterator
+            left_answer.id ="question3_leftAnswer_"+question_iterator+"_"+answerIterator
 
             let right_answer = document.createElement("p");
-            right_answer.classList.add("right_answer");
             right_answer.classList.add("form-control");
             right_answer.classList.add("p-2");
+            right_answer.classList.add("right_answer_"+question_iterator);
             right_answer.classList.add("d-flex");
-            left_answer.id ="question2_rightAnswer_"+question_iterator+"_"+answerIterator
+            right_answer.id ="question3_rightAnswer_"+question_iterator+"_"+answerIterator
             left_answer.innerHTML = key
             right_answer.innerHTML = data.test.Json3[i].answer[key];
 

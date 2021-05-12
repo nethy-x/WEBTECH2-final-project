@@ -44,7 +44,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="teacher_home.php">
                             Domov
                         </a>
                     </li>
@@ -99,10 +99,11 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                     <tbody>
                     <?php
                     foreach ($tests as $test) {
-                        if (!strcmp($test['status'], "active")) {
-                            $status = "true";
+                        echo $test['status'];
+                        if (strcmp($test['status'], "active") == 0) {
+                            $status = "checked";
                         } else {
-                            $status = "false";
+                            $status = "";
                         }
                         echo "<tr>" .
                             "<td>" .
@@ -116,7 +117,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                             "</td>" .
                             "<td>" .
                             '<div class="form-check form-switch">
-                                            <input class="form-check-input activation" type="checkbox" id="' . $test['code'] . '" checked="' . $status . '" >
+                                            <input class="form-check-input activation" type="checkbox" id="' . $test['code'] . '" ' . $status . ' >
                                         </div>' .
                             "</td>" .
                             "<td>" .

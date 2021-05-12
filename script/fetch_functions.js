@@ -137,7 +137,7 @@ function query_question_2(data, element) {
         target_div_for_question.style.padding = "25px"
 
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-            "<p style='text-align: center' id='question2_"+question_iterator+"' class='question2_question>" + data.test.Json2[i].question + "</p>";
+            "<p style='text-align: center' id='question2_"+question_iterator+"' class='question2_question'>" + data.test.Json2[i].question + "</p>";
 
         let answerIterator = 0;
         for(let j in data.test.Json2[i].answer){

@@ -21,6 +21,6 @@ if(isset($_GET['code'])) {
     }
 } 
 else {
-    http_response_code(500);
+    http_response_code(404);
     echo json_encode(array("message" => "Nenájdené."));
 }

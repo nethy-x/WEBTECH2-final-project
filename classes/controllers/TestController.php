@@ -10,19 +10,42 @@ class TestController
         $this->conn = (new Database())->createConnection();
     }
 
+<<<<<<< HEAD
     public function insertTest($professor_id, $code, $test_json, $time_limit)
     {
         $stm = $this->conn->prepare("INSERT INTO tests (professor_id, code, test_json, time_limit) 
                                             VALUES (:professor_id, :code, :test_json, :time_limit)");
+=======
+    public function insertTest($professor_id, $code, $test_json, $time_limit, $status)
+    {
+        $stm = $this->conn->prepare("INSERT INTO tests (professor_id, code, test_json, time_limit, status) 
+                                            VALUES (:professor_id, :code, :test_json, :time_limit, :status)");
+>>>>>>> master
 
         try {
             $stm->bindParam(":professor_id", $professor_id, PDO::PARAM_INT);
             $stm->bindParam(":code", $code);
             $stm->bindParam(":test_json", $test_json);
             $stm->bindParam(":time_limit", $time_limit);
+<<<<<<< HEAD
+=======
+            $stm->bindParam(":status", $status);
+>>>>>>> master
 
             $stm->execute();
             return $this->conn->lastInsertId();
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function getCodeById($id){
+        $stm = $this->conn->prepare("SELECT code FROM tests WHERE id=:id");
+        try {
+            $stm->bindParam(":id", $id);
+            $stm->execute();
+            $result = $stm->fetch();
+            return ($result == false ? false : $result["code"]);
         } catch (Exception $e) {
             return false;
         }
@@ -41,6 +64,7 @@ class TestController
             return false;
         }
     }
+<<<<<<< HEAD
     public function getTime($code)
     {
         $stm = $this->conn->prepare("SELECT time_limit FROM tests WHERE code=:code");
@@ -55,6 +79,9 @@ class TestController
             return false;
         }
     }
+=======
+
+>>>>>>> master
     public function getIdByCode($code)
     {
         $stm = $this->conn->prepare("SELECT id FROM tests WHERE code=:code");
@@ -70,8 +97,9 @@ class TestController
         }
     }
 
-    public function getIdCodeByProfessor($professor_id){
-        $stm = $this->conn->prepare("SELECT id, code FROM tests WHERE professor_id=:professor_id");
+    public function getIdCodeByProfessor($professor_id)
+    {
+        $stm = $this->conn->prepare("SELECT * FROM tests WHERE professor_id=:professor_id");
 
         try {
             $stm->bindParam(":professor_id", $professor_id);
@@ -80,6 +108,19 @@ class TestController
         } catch (Exception $e) {
             return false;
         }
+    }
 
+    public function toggleActivation($code, $status)
+    {
+        $stm = $this->conn->prepare("UPDATE tests SET status=:status WHERE code=:code");
+
+        try {
+            $stm->bindParam(":status", $status);
+            $stm->bindParam(":code", $code);
+            $stm->execute();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }

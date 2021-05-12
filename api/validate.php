@@ -1,6 +1,10 @@
 <?php
+<<<<<<< HEAD:validate.php
 
 require_once(__DIR__ . "/classes/helpers/Database.php");
+=======
+require_once(__DIR__ . "/../classes/helpers/Database.php");
+>>>>>>> master:api/validate.php
 
 
 header('Access-Control-Allow-Origin: *');

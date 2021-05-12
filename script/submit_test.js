@@ -108,4 +108,7 @@ document.getElementById("Submit-Test").addEventListener("click", function () {
     console.log(JSON);
 
     fetchDefineTest(JSON);
+
+    document.getElementById("target").innerHTML = '<h1>Test bol uspesne vytvoreny</h1>'
+
 })

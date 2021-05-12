@@ -1,12 +1,12 @@
 <?php
 require_once(__DIR__ . "/classes/controllers/TestController.php");
 session_start();
-if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
-    $id =  $_SESSION["id"];
-    $email =  $_SESSION["username"];
+if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+    $email = $_SESSION["username"];
     $testController = new TestController();
     $tests = $testController->getIdCodeByProfessor($id);
-}else{
+} else {
     header("Location: index.php?role=professor");
     die();
 }
@@ -24,6 +24,8 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 
+    <script src="script/fetch_functions.js"></script>
+    <script src="script/activation.js"></script>
     <script src="script/notification.js"></script>
 </head>
 <body>
@@ -42,7 +44,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index.php">
                             Domov
                         </a>
                     </li>
@@ -84,51 +86,55 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Kód testu</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Kód testu</th>
+                        <th scope="col">Časový limit</th>
+                        <th scope="col">Aktivácia</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
                     </thead>
                     <tbody>
                     <?php
-                        foreach ($tests as $test){
-                            echo "<tr>".
-                                    "<td>".
-                                        $test['id'].
-                                    "</td>".
-                                    "<td>".
-                                        $test['code'].
-                                    "</td>".
-                                    "<td>".
-                                        "<a href='test_detail.php?code=".$test['code']."'><button class='btn btn-dark'>Detail</button></a>".
-                                    "</td>".
-                                    "<td>".
-                                        "<a href='#'><button class='btn btn-dark'>Export testu</button></a>".
-                                    "</td>".
-                                    "<td>".
-                                        "<a href='#'><button class='btn btn-dark'>Export hodnotenia</button></a>".
-                                    "</td>".
-                                "</tr>";
+                    foreach ($tests as $test) {
+                        if (strcmp($test['status'], "active") == 0) {
+                            $status = "checked";
+                        } else {
+                            $status = "";
                         }
+                        echo "<tr>" .
+                            "<td>" .
+                            $test['id'] .
+                            "</td>" .
+                            "<td>" .
+                            $test['code'] .
+                            "</td>" .
+                            "<td>" .
+                            $test['time_limit'] .
+                            "</td>" .
+                            "<td>" .
+                            '<div class="form-check form-switch">
+                                            <input class="form-check-input activation" type="checkbox" id="' . $test['code'] . '" ' . $status . ' >
+                                        </div>' .
+                            "</td>" .
+                            "<td>" .
+                            "<a href='test_detail.php?code=" . $test['code'] . "'><button class='btn btn-dark'>Detail</button></a>" .
+                            "</td>" .
+                            "<td>" .
+                            "<a href='#'><button class='btn btn-dark'>Export testu</button></a>" .
+                            "</td>" .
+                            "<td>" .
+                            "<a href='#'><button class='btn btn-dark'>Export hodnotenia</button></a>" .
+                            "</td>" .
+                            "</tr>";
+                    }
                     ?>
                     </tbody>
                 </table>
             </div>
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-                <div class="toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <strong class="me-auto">Alt+Tab tracker</strong>
-                        <small class="text-muted">just now</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div id="notification-body" class="toast-body">
-                        Niekto opustil tab.
-                    </div>
-                </div>
-            </div>
+            <?php include("partials/notification-html.php")?>
         </main>
     </div>
 </div>

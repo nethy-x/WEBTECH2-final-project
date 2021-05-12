@@ -1,12 +1,12 @@
 <?php
 require_once(__DIR__ . "/classes/controllers/TestController.php");
 session_start();
-if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
-    $id =  $_SESSION["id"];
-    $email =  $_SESSION["username"];
+if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+    $email = $_SESSION["username"];
     $testController = new TestController();
     $tests = $testController->getIdCodeByProfessor($id);
-}else{
+} else {
     header("Location: index.php?role=professor");
     die();
 }
@@ -24,7 +24,9 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 
-    <script src="script/notification.js"></script>
+    <script src="script/fetch_functions.js"></script>
+    <script src="script/activation.js"></script>
+<!--    <script src="script/notification.js"></script>-->
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -84,35 +86,50 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Kód testu</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Kód testu</th>
+                        <th scope="col">Časový limit</th>
+                        <th scope="col">Aktivácia</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
                     </thead>
                     <tbody>
                     <?php
-                        foreach ($tests as $test){
-                            echo "<tr>".
-                                    "<td>".
-                                        $test['id'].
-                                    "</td>".
-                                    "<td>".
-                                        $test['code'].
-                                    "</td>".
-                                    "<td>".
-                                        "<a href='test_detail.php?code=".$test['code']."'><button class='btn btn-dark'>Detail</button></a>".
-                                    "</td>".
-                                    "<td>".
-                                        "<a href='#'><button class='btn btn-dark'>Export testu</button></a>".
-                                    "</td>".
-                                    "<td>".
-                                        "<a href='#'><button class='btn btn-dark'>Export hodnotenia</button></a>".
-                                    "</td>".
-                                "</tr>";
+                    foreach ($tests as $test) {
+                        if (!strcmp($test['status'], "active")) {
+                            $status = "true";
+                        } else {
+                            $status = "false";
                         }
+                        echo "<tr>" .
+                            "<td>" .
+                            $test['id'] .
+                            "</td>" .
+                            "<td>" .
+                            $test['code'] .
+                            "</td>" .
+                            "<td>" .
+                            $test['time_limit'] .
+                            "</td>" .
+                            "<td>" .
+                            '<div class="form-check form-switch">
+                                            <input class="form-check-input activation" type="checkbox" id="' . $test['code'] . '" checked="' . $status . '" >
+                                        </div>' .
+                            "</td>" .
+                            "<td>" .
+                            "<a href='test_detail.php?code=" . $test['code'] . "'><button class='btn btn-dark'>Detail</button></a>" .
+                            "</td>" .
+                            "<td>" .
+                            "<a href='#'><button class='btn btn-dark'>Export testu</button></a>" .
+                            "</td>" .
+                            "<td>" .
+                            "<a href='#'><button class='btn btn-dark'>Export hodnotenia</button></a>" .
+                            "</td>" .
+                            "</tr>";
+                    }
                     ?>
                     </tbody>
                 </table>

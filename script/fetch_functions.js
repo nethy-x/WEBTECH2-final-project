@@ -21,7 +21,7 @@ function fetchDefineTest(test) {
         });
 }
 
-function fetchTest(element){
+function fetchTest(element) {
     let url = "api/fetchTestApi.php";
     let request = new Request(url, {
         method: 'GET',
@@ -35,12 +35,13 @@ function fetchTest(element){
         .then((data) => {
             if (!data.error) {
                 testJSON = data.test;
+              
                 console.log(data.test);
-                query_question_1(data,element);
-                query_question_2(data,element);
-                query_question_3(data,element);
-                query_question_4(data,element);
-                query_question_5(data,element);
+                query_question_1(data, element);
+                query_question_2(data, element);
+                query_question_3(data, element);
+                query_question_4(data, element);
+                query_question_5(data, element);
 
                 let submit_button = document.createElement("input");
                 let scriptForSubmit = document.createElement("script");
@@ -62,8 +63,27 @@ function fetchTest(element){
 
 }
 
+function fetchActivation(code, status) {
+    let url = "api/activationApi.php?code=" + code + "&status=" + status;
+    let request = new Request(url, {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    });
+    fetch(request)
+        .then((response) => response.json())
+        .then((data) => {
+            if (!data.error) {
+                console.log(data.code);
+                console.log(data.status);
+            } else {
+                console.log("error");
+            }
+        });
+}
 
-function query_question_1(data ,element){
+function query_question_1(data, element) {
     let target_div_for_all_question_type_1 = document.createElement("div");
     let tmp_header_for_identify_queried_questions = document.createElement("h2");
 
@@ -79,7 +99,8 @@ function query_question_1(data ,element){
         target_div_for_question.style.padding = "25px"
 
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-                                            "<p style='text-align: center'>"+data.test.Json1[i].question+"</p>";
+            "<p style='text-align: center'>" + data.test.Json1[i].question + "</p>";
+
 
 
         let answer = document.createElement("input");
@@ -97,7 +118,7 @@ function query_question_1(data ,element){
     element.append(target_div_for_all_question_type_1)
 }
 
-function query_question_2(data ,element){
+function query_question_2(data, element) {
     let target_div_for_all_question_type_2 = document.createElement("div");
     let tmp_header_for_identify_queried_questions = document.createElement("h2");
 
@@ -106,13 +127,14 @@ function query_question_2(data ,element){
 
     target_div_for_all_question_type_2.classList.add("bg-light");
 
-    for(let i in data.test.Json2){
+    for (let i in data.test.Json2) {
         let target_div_for_question = document.createElement("div");
         target_div_for_question.classList.add("col-md-4")
         target_div_for_question.style.padding = "25px"
 
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-            "<p style='text-align: center'>"+data.test.Json2[i].question+"</p>";
+            "<p style='text-align: center'>" + data.test.Json2[i].question + "</p>";
+
 
         let iterator = 0;
         for(let j in data.test.Json2[i].answer){
@@ -144,7 +166,7 @@ function query_question_2(data ,element){
     element.append(target_div_for_all_question_type_2)
 }
 
-function query_question_3(data,element){
+function query_question_3(data, element) {
     let target_div_for_all_question_type_3 = document.createElement("div");
     let tmp_header_for_identify_queried_questions = document.createElement("h2");
 
@@ -153,16 +175,16 @@ function query_question_3(data,element){
 
     target_div_for_all_question_type_3.classList.add("bg-light");
 
-    for(let i in data.test.Json3){
+    for (let i in data.test.Json3) {
         let target_div_for_question = document.createElement("div");
         target_div_for_question.classList.add("col-md-8")
         target_div_for_question.style.padding = "25px"
 
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-            "<p style='text-align: center'>"+data.test.Json3[i].question+"</p>";
+            "<p style='text-align: center'>" + data.test.Json3[i].question + "</p>";
 
 
-        for(let key in data.test.Json3[i].answer){
+        for (let key in data.test.Json3[i].answer) {
             let divForFlexStyle = document.createElement("div")
             divForFlexStyle.classList.add("d-flex");
 
@@ -180,7 +202,7 @@ function query_question_3(data,element){
             left_answer.innerHTML = key
             right_answer.innerHTML = data.test.Json3[i].answer[key];
 
-           // console.log(data.test.Json3[i].answer)
+            // console.log(data.test.Json3[i].answer)
             divForFlexStyle.append(left_answer);
             divForFlexStyle.append(right_answer);
             target_div_for_question.append(divForFlexStyle);
@@ -190,7 +212,7 @@ function query_question_3(data,element){
     element.append(target_div_for_all_question_type_3)
 }
 
-function query_question_4(data ,element){
+function query_question_4(data, element) {
     let target_div_for_all_question_type_4 = document.createElement("div");
     let tmp_header_for_identify_queried_questions = document.createElement("h2");
 
@@ -199,32 +221,32 @@ function query_question_4(data ,element){
 
     target_div_for_all_question_type_4.classList.add("bg-light");
 
-   // for(let i in data.test.Json4){
-        let target_div_for_question = document.createElement("div");
-        target_div_for_question.classList.add("col-md-4")
-        target_div_for_question.style.padding = "25px"
+    // for(let i in data.test.Json4){
+    let target_div_for_question = document.createElement("div");
+    target_div_for_question.classList.add("col-md-4")
+    target_div_for_question.style.padding = "25px"
 
 
-        target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-            "<p style='text-align: center'>"+data.test.Json4.question+"</p>";
+    target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
+        "<p style='text-align: center'>" + data.test.Json4.question + "</p>";
 
-            let canvas = document.createElement('canvas');
-            let script = document.createElement("script");
+    let canvas = document.createElement('canvas');
+    let script = document.createElement("script");
 
-            canvas.classList.add("bg-dark")
-            canvas.id = "canvas";
+    canvas.classList.add("bg-dark")
+    canvas.id = "canvas";
 
-            script.canvas = "canvas";
+    script.canvas = "canvas";
 
-            target_div_for_question.append(canvas);
-            target_div_for_question.append(script);
+    target_div_for_question.append(canvas);
+    target_div_for_question.append(script);
 
-        target_div_for_all_question_type_4.append(target_div_for_question);
-  //  }
+    target_div_for_all_question_type_4.append(target_div_for_question);
+    //  }
     element.append(target_div_for_all_question_type_4)
 }
 
-function query_question_5(data ,element){
+function query_question_5(data, element) {
     let target_div_for_all_question_type_5 = document.createElement("div");
     let tmp_header_for_identify_queried_questions = document.createElement("h2");
 
@@ -232,6 +254,7 @@ function query_question_5(data ,element){
     target_div_for_all_question_type_5.append(tmp_header_for_identify_queried_questions);
 
     target_div_for_all_question_type_5.classList.add("bg-light");
+
 
     for(let i in data.test.Json5){
         let target_div_for_question = document.createElement("div");

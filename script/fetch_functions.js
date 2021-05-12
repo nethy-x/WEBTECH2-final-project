@@ -48,7 +48,9 @@ function fetchTest(element) {
 
                 let submit_button = document.createElement("input");
                 let scriptForSubmit = document.createElement("script");
+                let scriptForSortableQuestion3 = document.createElement("script");
                 scriptForSubmit.src = "script/student_test_perspective/submit_test.js"
+                scriptForSortableQuestion3.src = "script/sortable/sortable_script.js";
                 submit_button.type = "button";
                 submit_button.classList.add("btn");
                 submit_button.classList.add("btn-danger");
@@ -56,6 +58,7 @@ function fetchTest(element) {
                 submit_button.id = "submit_test";
                 element.append(submit_button);
                 element.append(scriptForSubmit);
+                element.append(scriptForSortableQuestion3);
                 element.style.marginBottom = "270px"
 
             } else {
@@ -194,10 +197,13 @@ function query_question_3(data, element) {
             let left_answer = document.createElement("p");
             left_answer.classList.add("form-control");
             left_answer.classList.add("p-2");
+            left_answer.classList.add("left_answer");
+
             left_answer.style.marginRight = "25%"
             left_answer.classList.add("d-flex");
 
             let right_answer = document.createElement("p");
+            right_answer.classList.add("right_answer");
             right_answer.classList.add("form-control");
             right_answer.classList.add("p-2");
             right_answer.classList.add("d-flex");

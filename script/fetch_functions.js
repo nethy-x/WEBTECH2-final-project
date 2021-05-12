@@ -255,7 +255,7 @@ function query_question_5(data, element) {
 
     target_div_for_all_question_type_5.classList.add("bg-light");
 
-
+    let iterator = 0;
     for(let i in data.test.Json5){
         let target_div_for_question = document.createElement("div");
         target_div_for_question.classList.add("col-md-4")
@@ -265,13 +265,18 @@ function query_question_5(data, element) {
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
             "<p style='text-align: center'>"+data.test.Json5[i].question+"</p>";
 
-            let question = document.createElement("math-field");
+
+            let question = new MathfieldElement();
+            question.setOptions({
+            readOnly: true,
+            });
             question.style.fontSize = "32px";
             question.style.padding = "8px";
             question.style.borderRadius = "8px";
             question.style.border = "1px solid black";
-            question.style.boxShadow = "0 0 8px rgba(0,0,0,.2";
-            question.innerHTML = data.test.Json5[i]["question-math"];
+            question.style.boxShadow = "0 0 8px rgba(0,0,0,.2)";
+            question.value = data.test.Json5[i]["question-math"];
+
 
             let answer = document.createElement("math-field");
 
@@ -281,6 +286,8 @@ function query_question_5(data, element) {
             answer.style.borderRadius = "8px";
             answer.style.border = "1px solid black";
             answer.style.boxShadow = "0 0 8px rgba(0,0,0,.2)";
+            answer.id = "q_5"+iterator.toString();
+            iterator++;
 
             target_div_for_question.append(question);
             target_div_for_question.append(answer);

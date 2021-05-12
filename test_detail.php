@@ -63,7 +63,7 @@ $studentController = new StudentController();
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index.php">
                             Domov
                         </a>
                     </li>
@@ -166,6 +166,7 @@ $studentController = new StudentController();
                     </div>
                 </div>
             </div>
+            <?php include("partials/notification-html.php")?>
         </main>
     </div>
 </div>

@@ -5,14 +5,19 @@ require_once(__DIR__ . "/../classes/controllers/TestLogsController.php");
 session_start();
 $json = file_get_contents('php://input');
 $data = json_decode($json);
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) && isset($_SESSION['code'])) {
     $student_id = $_SESSION['id'];
-    $testController = new TestLogsController();
-    $tracker = $testController->getTrackerByStudentId($student_id);
+    $test_code = $_SESSION['code'];
+
+    $testController = new TestController();
+    $test_id =  $testController->getIdByCode($test_code);
+
+    $testLogController = new TestLogsController();
+    $tracker = $testLogController->getTrackerByStudentId($student_id);
     $key = "state";
     if ($tracker != $data->$key) {
         $tracker = $data->$key;
-        if ($testController->updateTracker($student_id, $tracker)) {
+        if ($testLogController->updateTracker($student_id, $test_id, $tracker)) {
             $response = array("error" => false, "state" => $tracker);
             echo json_encode($response);
         } else {

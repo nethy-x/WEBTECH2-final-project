@@ -208,6 +208,7 @@ function query_question_3(data, element) {
             left_answer.classList.add("left_answer");
             left_answer.style.marginRight = "25%"
             left_answer.classList.add("d-flex");
+            left_answer.classList.add("sortable");
             left_answer.id ="question2_leftAnswer_"+question_iterator+"_"+answerIterator
 
             let right_answer = document.createElement("p");

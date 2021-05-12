@@ -26,6 +26,12 @@
                     case 2:
                         echo "Prihlásenie zlyhalo: Prosím skontrolujte svoje prihlasovací email a heslo";
                         break;
+                    case 3:
+                        echo "Prihlásenie zlyhalo: Študent s daným ID už píše test";
+                        break;
+                    case 4:
+                        echo "Prihlásenie zlyhalo: Študent s daným ID už existuje, ale nezhoduje sa mu meno";
+                        break;
                 }
             } else if (isset($_GET["registerError"])) {
                 switch ($_GET["registerError"]) {

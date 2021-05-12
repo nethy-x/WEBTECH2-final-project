@@ -59,7 +59,7 @@ if($student_name == false){
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
+                        <a class="nav-link" href="index.php">
                             Domov
                         </a>
                     </li>
@@ -69,7 +69,7 @@ if($student_name == false){
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="teacher_detail.php">
+                        <a class="nav-link active" aria-current="page" href="teacher_detail.php">
                             Detaily testov
                         </a>
                     </li>

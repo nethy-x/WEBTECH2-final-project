@@ -27,6 +27,18 @@ class TestController
         }
     }
 
+    public function getCodeById($id){
+        $stm = $this->conn->prepare("SELECT code FROM tests WHERE id=:id");
+        try {
+            $stm->bindParam(":id", $id);
+            $stm->execute();
+            $result = $stm->fetch();
+            return ($result == false ? false : $result["code"]);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
     public function getByCode($code)
     {
         $stm = $this->conn->prepare("SELECT test_json FROM tests WHERE code=:code");

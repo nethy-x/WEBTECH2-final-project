@@ -20,12 +20,13 @@ class TestLogsController
         return ($result == false ? false : $result["tracker"]);
     }
 
-    public function updateTracker($student_id, $tracker)
+    public function updateTracker($student_id, $test_id, $tracker)
     {
-        $stm = $this->conn->prepare("UPDATE test_logs SET tracker=:tracker WHERE student_id=:student_id");
+        $stm = $this->conn->prepare("UPDATE test_logs SET tracker=:tracker WHERE student_id=:student_id AND test_id = :test_id");
 
         try {
             $stm->bindParam(":student_id", $student_id, PDO::PARAM_INT);
+            $stm->bindParam(":test_id", $test_id, PDO::PARAM_INT);
             $stm->bindParam(":tracker", $tracker);
             $stm->execute();
             return true;
@@ -34,11 +35,27 @@ class TestLogsController
         }
     }
 
-    public function getAllByTestId($test_id,$tracker)
-    {
-        $stm = $this->conn->prepare("SELECT student_id, tracker FROM test_logs WHERE test_id=:test_id and tracker=:tracker");
 
-        $stm->bindParam(":test_id", $test_id);
+    public function updateSent($student_id, $test_id, $sent)
+    {
+        $stm = $this->conn->prepare("UPDATE test_logs SET sent=:sent WHERE student_id=:student_id AND test_id = :test_id");
+        try {
+            $stm->bindParam(":student_id", $student_id, PDO::PARAM_INT);
+            $stm->bindParam(":test_id", $test_id, PDO::PARAM_INT);
+            $stm->bindParam(":sent", $sent);
+            $stm->execute();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function getAllByTestId($test_id, $tracker)
+    {
+        $stm = $this->conn->prepare("SELECT * FROM test_logs WHERE test_id=:test_id and tracker=:tracker and sent='false'");
+
+        $stm->bindParam(":test_id", $test_id, PDO::PARAM_INT);
+
         $stm->bindParam(":tracker", $tracker);
         $stm->execute();
         $result = $stm->fetchAll();

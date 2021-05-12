@@ -26,7 +26,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
 
     <script src="script/fetch_functions.js"></script>
     <script src="script/activation.js"></script>
-<!--    <script src="script/notification.js"></script>-->
+    <script src="script/notification.js"></script>
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -44,7 +44,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index.php">
                             Domov
                         </a>
                     </li>
@@ -99,10 +99,10 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                     <tbody>
                     <?php
                     foreach ($tests as $test) {
-                        if (!strcmp($test['status'], "active")) {
-                            $status = "true";
+                        if (strcmp($test['status'], "active") == 0) {
+                            $status = "checked";
                         } else {
-                            $status = "false";
+                            $status = "";
                         }
                         echo "<tr>" .
                             "<td>" .
@@ -116,7 +116,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                             "</td>" .
                             "<td>" .
                             '<div class="form-check form-switch">
-                                            <input class="form-check-input activation" type="checkbox" id="' . $test['code'] . '" checked="' . $status . '" >
+                                            <input class="form-check-input activation" type="checkbox" id="' . $test['code'] . '" ' . $status . ' >
                                         </div>' .
                             "</td>" .
                             "<td>" .
@@ -134,18 +134,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                     </tbody>
                 </table>
             </div>
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
-                <div class="toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <strong class="me-auto">Alt+Tab tracker</strong>
-                        <small class="text-muted">just now</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div id="notification-body" class="toast-body">
-                        Niekto opustil tab.
-                    </div>
-                </div>
-            </div>
+            <?php include("partials/notification-html.php")?>
         </main>
     </div>
 </div>

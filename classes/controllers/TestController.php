@@ -10,27 +10,17 @@ class TestController
         $this->conn = (new Database())->createConnection();
     }
 
-<<<<<<< HEAD
-    public function insertTest($professor_id, $code, $test_json, $time_limit)
-    {
-        $stm = $this->conn->prepare("INSERT INTO tests (professor_id, code, test_json, time_limit) 
-                                            VALUES (:professor_id, :code, :test_json, :time_limit)");
-=======
     public function insertTest($professor_id, $code, $test_json, $time_limit, $status)
     {
         $stm = $this->conn->prepare("INSERT INTO tests (professor_id, code, test_json, time_limit, status) 
                                             VALUES (:professor_id, :code, :test_json, :time_limit, :status)");
->>>>>>> master
 
         try {
             $stm->bindParam(":professor_id", $professor_id, PDO::PARAM_INT);
             $stm->bindParam(":code", $code);
             $stm->bindParam(":test_json", $test_json);
             $stm->bindParam(":time_limit", $time_limit);
-<<<<<<< HEAD
-=======
             $stm->bindParam(":status", $status);
->>>>>>> master
 
             $stm->execute();
             return $this->conn->lastInsertId();
@@ -64,7 +54,6 @@ class TestController
             return false;
         }
     }
-<<<<<<< HEAD
     public function getTime($code)
     {
         $stm = $this->conn->prepare("SELECT time_limit FROM tests WHERE code=:code");
@@ -79,9 +68,7 @@ class TestController
             return false;
         }
     }
-=======
 
->>>>>>> master
     public function getIdByCode($code)
     {
         $stm = $this->conn->prepare("SELECT id FROM tests WHERE code=:code");

@@ -14,12 +14,6 @@ if (isset($_SESSION['code'])) {
     }
 
     $test_json = json_decode($test_json);
-<<<<<<< HEAD
-    //TODO: prejdi $test_json a vypis otazku na zaklade typu otazky
-    //      funkciu pre kazdy typ otazky..
-=======
-
->>>>>>> master
 
     $response = array("error" => false, "test" => $test_json);
 

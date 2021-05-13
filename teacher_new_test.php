@@ -132,7 +132,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
 
                     <div class="mt-3">
                         <h2>Časomiera</h2>
-                        <?php include "time_limit/time_limit.php"?>
+                        <?php include "partials/time_limit.php"?>
                         <hr>
                     </div>
 					

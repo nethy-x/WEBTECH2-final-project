@@ -68,7 +68,7 @@ function fetchTest(element) {
         });
 }
 
-function fetchTime(element, modal) {
+function fetchTime(element) {
     let url = "api/fetchTimeApi.php";
     let request = new Request(url, {
         method: 'GET',
@@ -83,31 +83,32 @@ function fetchTime(element, modal) {
         })
         .then(function (data) {
             if (!data.error) {
-                //console.log(data.time);
                 element.innerHTML = data.time;
                 document.getElementById("timer").style = "display:block";
-                
-                let u = "time_limit/countdown.php";
-                let req = new Request(u, {
-                    method: 'GET',
-                    headers: {
-                        'Content-type': 'text/html; charset=UTF-8'
-                    },
-                    data: {"time": data.time}
-                });
+                startTest(data.time);
+            } else {
+                console.log("error");
+            }
+        });
+}
 
-                fetch(req)
-                    .then(function (resp) {
-                        return resp.json();
-                    })
-                    .then(function (dt) {
-                        if (!dt.error) {
-                            console.log(dt);
-                            //modal.modal('toggle');
-                        } else {
-                            console.log("error");
-                        }
-                    });
+function fetchUpdatedTime(element) {
+    let url = "api/fetchUpdatedTimeApi.php";
+    let request = new Request(url, {
+        method: 'GET',
+        headers: {
+            'Content-type': 'text/html; charset=UTF-8'
+        }
+    });
+
+    fetch(request)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            if (!data.error) {
+                element.innerHTML = data.time;
+                document.getElementById("timer").style = "display:block";
             } else {
                 console.log("error");
             }

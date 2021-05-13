@@ -126,7 +126,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                             "<a href='#'><button class='btn btn-dark'>Export testu</button></a>" .
                             "</td>" .
                             "<td>" .
-                            "<a href='#'><button class='btn btn-dark'>Export hodnotenia</button></a>" .
+                            "<a href='csvExport.php?id=" . $test['id'] ."'><button class='btn btn-dark'>Export hodnotenia</button></a>" .
                             "</td>" .
                             "</tr>";
                     }

@@ -2,6 +2,7 @@
 
 require_once(__DIR__ . "/classes/helpers/Database.php");
 
+
 $conn = (new Database())->createConnection();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -128,4 +129,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 </script>
 </body>
+
 </html>

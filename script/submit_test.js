@@ -101,10 +101,11 @@ document.getElementById("Submit-Test").addEventListener("click", function () {
     console.log(Json5);
 
     /*----------*/
+    let time_limit = document.getElementById("time_limit");
+    /*----------*/
 
-    let JSON = {Json1, Json2, Json3, Json4, Json5};
+    let JSON = {Json1, Json2, Json3, Json4, Json5, "time_limit": time_limit.value};
     console.log(JSON);
-
 
     fetchDefineTest(JSON);
 

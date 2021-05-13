@@ -15,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $statement->execute([$_POST["code"]]);
     $test_id = $statement->fetch(PDO::FETCH_ASSOC);
 
-    //TODO: start sa meni az ked sa button stlaci
     try {
         $stm = $conn->prepare("INSERT  INTO student (id, name, surname) VALUES (?, ?, ?)");
         $stm->execute([$_POST['id_num'], $_POST['name'], $_POST['surname']]);
@@ -27,8 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     try {
-        $s = $conn->prepare("INSERT INTO test_logs (test_id, student_id, start) VALUES (?, ?, ?)");
-        $s->execute([$test_id['id'], $_POST['id_num'], date('Y-m-d H:i:s', time())]);
+        $s = $conn->prepare("INSERT INTO test_logs (test_id, student_id) VALUES (?, ?)");
+        $s->execute([$test_id['id'], $_POST['id_num']]);
     } catch (Exception $e) {
         header("Location: ../index.php?role=student&loginError=3");
         die();

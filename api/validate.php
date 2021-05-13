@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . "/../classes/helpers/Database.php");
 
+
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 

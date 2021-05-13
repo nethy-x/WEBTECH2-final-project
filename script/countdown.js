@@ -59,5 +59,6 @@ $('#closeModal').on('click', function(){
 })
 
 $('#testFinished').on('hidden.bs.modal', function () {
+    submitCompletedTest();
     window.location.assign("logout.php");
 })

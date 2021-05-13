@@ -11,8 +11,7 @@ if(isset($_GET["code"])){
         $testCode = $_GET['code'];
         $tests = $testController->getByCode($testCode);
         $dompdf = new Dompdf();
-        //TODO sem hod stranku ale najsor ju nacitaj do premennej ako dom element
-        $dompdf->loadHtml("student_home.php");
+        $dompdf->loadHtml($tests);
         $dompdf->setPaper('A4','landscape');
         $dompdf->render();
         $dompdf->stream();

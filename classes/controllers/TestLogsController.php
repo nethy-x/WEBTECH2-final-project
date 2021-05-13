@@ -131,7 +131,8 @@ class TestLogsController
             $stm = $this->conn->prepare("UPDATE test_logs SET start=:start WHERE student_id=:student_id AND test_id = :test_id");
 
             try {
-                $stm->bindParam(":start", date('Y-m-d H:i:s'));
+                $start = date('Y-m-d H:i:s');
+                $stm->bindParam(":start", $start);
                 $stm->bindParam(":test_id", $test_id);
                 $stm->bindParam(":student_id", $student_id);
                 $stm->execute();
@@ -156,6 +157,22 @@ class TestLogsController
             if($result["start"] > $result["finish"]) {
                 return false;
             }
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function addTestAndEvaluation($evaluation_sum, $test_json, $student_id, $test_id){
+        $stm = $this->conn->prepare("UPDATE test_logs SET test_json=:test_json, evaluation_sum=:evaluation_sum
+                                            WHERE student_id=:student_id AND test_id = :test_id");
+        try {
+            $stm->bindParam(":test_json", $test_json);
+            $stm->bindParam(":evaluation_sum", $evaluation_sum, PDO::PARAM_INT);
+            $stm->bindParam(":student_id", $student_id, PDO::PARAM_INT);
+            $stm->bindParam(":test_id", $test_id, PDO::PARAM_INT);
+
+            $stm->execute();
             return true;
         } catch (Exception $e) {
             return false;

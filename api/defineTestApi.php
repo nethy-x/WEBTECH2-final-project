@@ -7,6 +7,7 @@ session_start();
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
+    $test_json = json_encode($data->test);
     $test_code = uniqid();
     $email = $_SESSION["username"];
 

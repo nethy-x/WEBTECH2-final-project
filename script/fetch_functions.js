@@ -235,7 +235,7 @@ function query_question_3(data, element) {
         target_div_for_question.style.padding = "25px"
 
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-            "<p style='text-align: center' id='question2_" + question_iterator + "'> " + data.test.Json3[i].question + "</p>";
+            "<p style='text-align: center' class='question3_question' id='question3_"+question_iterator+"'  > " + data.test.Json3[i].question + "</p>";
 
         let divForFlexStyle = document.documentElement;
         let divForLeftAnswer = document.documentElement;
@@ -262,14 +262,17 @@ function query_question_3(data, element) {
             left_answer.classList.add("left_answer_"+question_iterator);
             left_answer.style.marginRight = "25%"
             left_answer.classList.add("d-flex");
-            left_answer.id ="question3_leftAnswer_"+question_iterator+"_"+answerIterator
+            left_answer.classList.add("question3_leftAnswer")
+            left_answer.id ="question3LeftAnswer_"+question_iterator+"_"+answerIterator
 
             let right_answer = document.createElement("p");
             right_answer.classList.add("form-control");
             right_answer.classList.add("p-2");
             right_answer.classList.add("right_answer_"+question_iterator);
+            right_answer.classList.add("question3_rightAnswer");
+
             right_answer.classList.add("d-flex");
-            right_answer.id ="question3_rightAnswer_"+question_iterator+"_"+answerIterator
+            right_answer.id ="question3RightAnswer_"+question_iterator+"_"+answerIterator
             left_answer.innerHTML = key
             right_answer.innerHTML = data.test.Json3[i].answer[key];
 
@@ -338,34 +341,38 @@ function query_question_5(data, element) {
 
 
         target_div_for_question.innerHTML = "<h5 style='text-align: center'>otazka</h5>" +
-            "<p style='text-align: center'>" + data.test.Json5[i].question + "</p>";
+            "<p style='text-align: center' id='question5_"+iterator+"' class='question5_question'>"+data.test.Json5[i].question+"</p>";
 
 
         let question = new MathfieldElement();
         question.setOptions({
             readOnly: true,
-        });
-        question.style.fontSize = "32px";
-        question.style.padding = "8px";
-        question.style.borderRadius = "8px";
-        question.style.border = "1px solid black";
-        question.style.boxShadow = "0 0 8px rgba(0,0,0,.2)";
-        question.value = data.test.Json5[i]["question-math"];
+            });
+            question.style.fontSize = "32px";
+            question.style.padding = "8px";
+            question.style.borderRadius = "8px";
+            question.style.border = "1px solid black";
+            question.id = "question5_"+iterator;
+            question.classList.add("mathQuestion")
+            question.style.boxShadow = "0 0 8px rgba(0,0,0,.2)";
+
+            question.value = data.test.Json5[i]["question-math"];
 
 
-        let answer = document.createElement("math-field");
+            let answer = document.createElement("math-field");
 
-        answer.setAttribute("virtual-keyboard-mode", "manual");
-        answer.style.fontSize = "32px";
-        answer.style.padding = "8px";
-        answer.style.borderRadius = "8px";
-        answer.style.border = "1px solid black";
-        answer.style.boxShadow = "0 0 8px rgba(0,0,0,.2)";
-        answer.id = "q_5" + iterator.toString();
-        iterator++;
+            answer.setAttribute("virtual-keyboard-mode","manual");
+            answer.style.fontSize = "32px";
+            answer.style.padding = "8px";
+            answer.style.borderRadius = "8px";
+            answer.style.border = "1px solid black";
+            answer.classList.add("mathAnswer")
+            answer.style.boxShadow = "0 0 8px rgba(0,0,0,.2)";
+            answer.id = "answer5_"+iterator.toString();
 
-        target_div_for_question.append(question);
-        target_div_for_question.append(answer);
+            iterator++;
+            target_div_for_question.append(question);
+            target_div_for_question.append(answer);
 
         target_div_for_all_question_type_5.append(target_div_for_question);
     }

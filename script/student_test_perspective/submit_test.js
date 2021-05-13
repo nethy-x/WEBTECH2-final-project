@@ -1,4 +1,9 @@
 document.getElementById("submit_test").addEventListener("click",function (){
+    submitCompletedTest();
+    window.location.assign("logout.php");
+})
+
+function submitCompletedTest(){
     let questionFromForm1 = document.getElementsByClassName("question1_question");
     let answerFromForm1 = document.getElementsByClassName("question1_answer");
 
@@ -15,14 +20,19 @@ document.getElementById("submit_test").addEventListener("click",function (){
     let mathAnswerFromForm5 = document.getElementsByClassName("mathAnswer");
 
 
-    let question1 = {};
-    let question2 = {};
-    let question3 = {};
-    let question5 = {};
+
+
+    let Json1 = {};
 
     Array.from(answerFromForm1).forEach(function (item,index){
-        question1[questionFromForm1[index].innerHTML] =  answerFromForm1[index].value;
+        Json1["question"+Number(index+1)]={
+            "question_type" : "question_1",
+            "question" : questionFromForm1[index].innerHTML,
+            "answer" : answerFromForm1[index].value
+        }
     })
+
+    let Json2 = {};
 
     Array.from(questionFromForm2).forEach(function (question,questionIndex){
         let answerIteratorForJsonKey = 0;
@@ -38,10 +48,16 @@ document.getElementById("submit_test").addEventListener("click",function (){
                 answerIteratorForJsonKey++;
             }
         });
-        question2[question.innerHTML] = tmp;
+        Json2["question"+Number(questionIndex+1)]={
+            "question_type" : "question_2",
+            "question" : question.innerHTML,
+            "answer" : tmp
+        }
         tmp = {};
         answerIteratorForJsonKey = 0;
     });
+
+    let Json3 = {};
 
     Array.from(questionFromForm3).forEach(function (question,questionIndex){
         let tmp = {}
@@ -50,29 +66,35 @@ document.getElementById("submit_test").addEventListener("click",function (){
                 tmp[leftAnswer.innerHTML] = rightAnswerFromInput3[leftAnswerIndex].innerHTML;
             }
         })
-        question3[question.innerHTML+"_"+questionIndex] = tmp;
+        Json3["question"+Number(questionIndex+1)]={
+            "question_type" : "question_3",
+            "question" : question.innerHTML,
+            "answer" : tmp
+        }
         tmp = {};
     });
 
-   Array.from(questionFromForm5).forEach(function (item,index){
-       let tmp = {};
-       if(mathQuestionFromForm5[index].id.split("_")[1] === mathAnswerFromForm5[index].id.split("_")[1]){
-           tmp[mathQuestionFromForm5[index].value] = mathAnswerFromForm5[index].value;
-       }
-       question5[item.innerHTML+"_"+index] = tmp;
-       //TODO odstranit indexovanie
-   })
+    let Json5 = {};
 
-    let JSON1 = {"question1":question1};
-    let JSON2 = {"question2":question2};
-    let JSON3 = {"question3":question3};
-    let JSON5 = {"question5":question5};
-    let FinalJson = {JSON1,JSON2,JSON3,JSON5};
+    Array.from(questionFromForm5).forEach(function (item,index){
+        let tmp = {};
+        if(mathQuestionFromForm5[index].id.split("_")[1] === mathAnswerFromForm5[index].id.split("_")[1]){
+            tmp[mathQuestionFromForm5[index].value] = mathAnswerFromForm5[index].value;
+        }
 
-    fetchDefineTest(FinalJson);
-})
+        Json5["question"+Number(index+1)]={
+            "question_type" : "question_5",
+            "question" : item.innerHTML,
+            "answer" : tmp
+        }
+    })
 
-function fetchDefineTest(test) {
+    let FinalJson = {Json1,Json2,Json3,Json5};
+
+    fetchEvaluateTest(FinalJson);
+}
+
+function fetchEvaluateTest(test) {
     let url = "api/evaluation/evaluateApi.php";
     let request = new Request(url, {
         method: 'POST',

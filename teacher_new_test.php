@@ -140,10 +140,10 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                         <input class="btn btn-dark" type="button" value="Submit" id="Submit-Test">
                     </div>
                 </form>
+            </div>
                 <div class="mt-4">
                     <h5 id="fetch-response" style="color: #212529"> </h5>
                 </div>
-            </div>
             <?php include("partials/notification-html.php")?>
         </main>
     </div>

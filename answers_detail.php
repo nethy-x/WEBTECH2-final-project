@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . "/classes/controllers/StudentController.php");
+require_once(__DIR__ . "/classes/controllers/TestLogsController.php");
 
 session_start();
 if (!isset($_GET["code"]) || !isset($_GET["student_id"]) || $_GET["student_id"] == -1) {
@@ -97,6 +98,13 @@ if($student_name == false){
                     </div>
                 </div>
             </div>
+            <?php
+                $testLogsController = new TestLogsController();
+                $testController = new TestController();
+                $testController->getIdByCode($code);
+                $testLogsController->getTestByStudentTestId($student_id,$testController);
+                var_dump($testLogsController);
+            ?>
             <?php include("partials/notification-html.php")?>
         </main>
     </div>

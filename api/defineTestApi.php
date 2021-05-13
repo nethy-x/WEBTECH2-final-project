@@ -1,4 +1,5 @@
 <?php
+
 require_once(__DIR__ . "/../classes/controllers/TestController.php");
 require_once(__DIR__ . "/../classes/controllers/ProfessorController.php");
 
@@ -6,7 +7,6 @@ session_start();
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
-    $test_json = json_encode($data->test);
     $test_code = uniqid();
     $email = $_SESSION["username"];
 
@@ -17,9 +17,12 @@ if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
         echo json_encode($response);
         die();
     }
-
     $testController = new TestController();
-    $test_id = $testController->insertTest($professor_id, $test_code, $test_json, null, "inactive");
+    
+    $time_limit = $data->test->time_limit;
+    unset($data->test->time_limit);
+
+    $test_id = $testController->insertTest($professor_id, $test_code, $test_json, $time_limit, "inactive");
     if($test_id == false){
         $response = array("error" => true, "message" => "Chyba počas vytvárania testu");
         echo json_encode($response);

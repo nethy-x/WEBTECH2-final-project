@@ -116,6 +116,12 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                         <hr>
                     </div>
 
+<!--                    <div>-->
+<!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question5">-->
+<!--                    </div>-->
+
+
+
                     <div>
                         <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question5">
                     </div>
@@ -124,6 +130,12 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                     <!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question5">-->
                     <!--                    </div>-->
 
+                    <div class="mt-3">
+                        <h2>Časomiera</h2>
+                        <?php include "partials/time_limit.php"?>
+                        <hr>
+                    </div>
+					
                     <div>
                         <input class="btn btn-dark" type="button" value="Submit" id="Submit-Test">
                     </div>

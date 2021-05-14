@@ -147,6 +147,10 @@ $studentController = new StudentController();
                             "<td>" .
                             "<a href='answers_detail.php?code=" . $code . "&student_id=" . $test_log["student_id"] . "'><button class='btn btn-dark'>Prehľad odpovedí</button></a>" .
                             "</td>" .
+                            "</td>" .
+                            "<td>" .
+                            "<a href='exports/pdfExport.php?code=" . $code . "&student_id=" . $test_log["student_id"] . "'><button class='btn btn-dark'>Export Testu</button></a>" .
+                            "</td>" .
                             "</tr>";
                     }
                     ?>

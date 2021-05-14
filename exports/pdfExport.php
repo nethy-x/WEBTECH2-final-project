@@ -16,111 +16,110 @@ $code = $_GET["code"];
 $student_id = $_GET["student_id"];
 
 $_SESSION["code"] = $_GET["code"];
+$string = "";
 
 if (!isset($_SESSION["username"]) || !isset($_SESSION["id"])) {
     header("Location: index.php?role=professor");
     die();
 }
 
-$studentController = new StudentController();
-$student_name = $studentController->getNameById($student_id);
-if ($student_name == false) {
-    $name = "Nedefinované";
-    $surname = "Nedefinované";
-} else {
-    $name = $student_name["name"];
-    $surname = $student_name["surname"];
-}
+                $testLogsController = new TestLogsController();
+                $testController = new TestController();
+                $test_code = $testController->getIdByCode($code);
+                $test_json = $testLogsController->getTestByStudentTestId($student_id, $test_code);
 
-$testLogsController = new TestLogsController();
-$testController = new TestController();
-$test_code = $testController->getIdByCode($code);
-$test_json = $testLogsController->getTestByStudentTestId($student_id, $test_code);
-$string = "";
+                $test_json = json_decode($test_json);
+                if ($test_json == null) {
+                    $string.= '<h5>Študent doposial neodovzdal test.</h5>';
+                } else {
+                    foreach ($test_json as $eval => $item) {
+                        if ($eval == "evaluation_sum") {
+                            $string .= '<div >';
+                            $string .= '<p>' . $item . ' </p>';
+                            $string .= '</div>';
+                            continue;
+                        }
+                        foreach ($item as $question) {
+                            $string .= '<div >';
+                            if ($question->question_type == "question_1") {
+                                $string .= '<div >';
+                                $string .= '<h5 >' . $question->question . '</h5>';
 
-$test_json = json_decode($test_json);
-if($test_json == null){
-    $string = "Študent neodovzdal test";
-}else {
-    foreach ($test_json as $eval => $item) {
-        var_dump($item);
-        foreach ($item as $question) {
-            $string .= '<div>';
-            if ($question->question_type == "question_1") {
-                $string .= '<div >';
-                $string .= '<h5 >' . $question->question . '</h5>';
-                $string .= '<input type="text"  value="' . $question->answer . '" readonly>';
-                $string .= '<input type="text"  value="' . "Počet bodov: " . $question->evaluation . '" readonly>';
-                $string .= '</div>';
+                                $string .= '<p>' . $question->answer . ' </p>';
+                                $string .= '<p>' . $question->evaluation . ' </p>';
 
-            }
+                                $string .= '</div>';
+
+                            }
 
 
-            if ($question->question_type == "question_2") {
-                $string .= '<div>';
-                $string .= '<h5 >' . $question->question . '</h5>';
-                foreach ($question->answer as $index => $answer) {
-                    $string .= '<div >';
-                    $string .= '<p type="text" value="' . $index . '">';
-                    if ($answer) {
-                        $answer = "checked";
-                        $string .= '<p type="checkbox"  ' . $answer . ' ">';
-                    } else {
-                        $answer = "";
-                        $string .= '<p type="checkbox"  ' . $answer . '">';
+                            if ($question->question_type == "question_2") {
+                                $string .= '<div >';
+                                $string .= '<h5 >' . $question->question . '</h5>';
+                                foreach ($question->answer as $index => $answer) {
+                                    $string .= '<div>';
+                                    $string .= '<input type="text"  value="' . $index . '" >';
+                                    $string .= '<p>' . $index . '</p>';
+                                    if ($answer) {
+                                        $string .= "checked";
+
+                                    } else {
+                                        $string .= "unchecked";
+
+                                    }
+                                    $string .= '</div>';
+
+                                }
+                                $string .= '<p>' . $question->evaluation . '</p>';
+
+                                $string .= '</div>';
+                            }
+
+
+
+                            if ($question->question_type == "question_3") {
+                                $string.= '<div >';
+                                $string.= '<h5 >' . $question->question . '</h5>';
+                                $string.= '<div >';
+                                $string.= '<div >';
+                                foreach ($question->answer as $index => $answer) {
+                                    $string.= '<p>'. $index .'</p>';
+
+                                }
+                                $string.= '</div>';
+                                $string.= '<div >';
+                                foreach ($question->answer as $index => $answer) {
+
+                                    $string.= '<p>'. $answer .'</p>';
+
+                                }
+                                $string.= '</div>';
+                                $string.= '</div>';
+                                $string.= '<p>'. $question->evaluation .'</p>';
+                                $string.= '</div>';
+                            }
+                            if ($question->question_type == "question_5") {
+                                $string.= '<div >';
+                                $string.='<h5>' . $question->question . '</h5>';
+                                foreach ($question->answer as $index => $answer) {
+                                    $string.='<div >';
+                                    $string.= '<p>' . $index . '</p>';
+                                    $string.='</div>';
+                                    $string.= '<div  >';
+                                    $string.= '<p>' . $answer . '</math-field>';
+                                    $string.= '</div>';
+                                }
+
+
+                                $string.= '<p>'. $question->evaluation .'</p>';
+                                $string.= '</div>';
+                            }
+                            $string.= '</div>';
+                        }
+
                     }
-                    $string .= '</div>';
-
                 }
-                $string .= '<input type="text"  value="' . "Počet bodov: " . $question->evaluation . '" readonly>';
-                $string .= '</div>';
-            }
 
-            if ($question->question_type == "question_3") {
-                $string .= '<div >';
-                $string .= '<h5 >' . $question->question . '</h5>';
-                $string .= '<div >';
-                $string .= '<div >';
-                foreach ($question->answer as $index => $answer) {
-                    $string .= '<input type="text" style="margin-right:25%;"  value="' . $index . '" readonly>';
-
-                }
-                $string .= '</div>';
-                $string .= '<div >';
-                foreach ($question->answer as $index => $answer) {
-
-                    $string .= '<input type="text"  value="' . $answer . '" readonly>';
-
-                }
-                $string .= '</div>';
-                $string .= '</div>';
-                $string .= '<input type="text" value="' . "Počet bodov: " . $question->evaluation . '" readonly>';
-                $string .= '</div>';
-            }
-            if ($question->question_type == "question_5") {
-                $string .= '<div>';
-                $string .= '<h5>' . $question->question . '</h5>';
-                foreach ($question->answer as $index => $answer) {
-                    $string .= '<div >';
-                    $string .= '<math-field read-only role="textbox" tabindex="0">' . $index . '</math-field>';
-                    $string .= '</div>';
-                    $string .= '<div>';
-                    $string .= '<math-field read-only role="textbox" tabindex="0" >' . $answer . '</math-field>';
-                    $string .= '</div>';
-                }
-                $string .= '<input type="text"value="' . "Počet bodov: " . $question->evaluation . '" readonly>';
-                $string .= '</div>';
-            }
-            $string .= '</div>';
-        }
-        if ($eval == "evaluation_sum") {
-            $string .= '<div >';
-            $string .= '<input type="text"value="' . "Celkový počet bodov: " . $item . '" readonly>';
-            $string .= '</div>';
-        }
-
-    }
-}
 
 if(isset($_GET["code"]) && isset($_GET["student_id"])){
     if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
@@ -134,6 +133,7 @@ if(isset($_GET["code"]) && isset($_GET["student_id"])){
         $dompdf->loadHtml($string);
         $dompdf->setPaper('A4','landscape');
         $dompdf->render();
+        //echo $string;
         $dompdf->stream();
     } else {
         header("Location: index.php?role=professor");

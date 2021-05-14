@@ -123,7 +123,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                             "<a href='test_detail.php?code=" . $test['code'] . "'><button class='btn btn-dark'>Detail</button></a>" .
                             "</td>" .
                             "<td>" .
-                            "<a href='#'><button class='btn btn-dark'>Export testu</button></a>" .
+                            "<a href='exports/pdfExport.php?code=" . $test['code'] . "'><button class='btn btn-dark'>Export testu</button></a>" .
                             "</td>" .
                             "<td>" .
                             "<a href='#'><button class='btn btn-dark'>Export hodnotenia</button></a>" .

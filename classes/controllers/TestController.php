@@ -110,4 +110,19 @@ class TestController
             return false;
         }
     }
+    public function getStatusByCode($code)
+    {
+        $stm = $this->conn->prepare("SELECT status FROM tests WHERE code=:code");
+
+        try {
+            $stm->bindParam(":code", $code);
+            $stm->execute();
+            $result = $stm->fetch();
+
+            return ($result == false ? false : $result["status"]);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
 }

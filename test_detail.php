@@ -84,7 +84,7 @@ $studentController = new StudentController();
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="teacher_reports.php">
-                            Reports
+                            Rozdelenie úloh
                         </a>
                     </li>
                 </ul>

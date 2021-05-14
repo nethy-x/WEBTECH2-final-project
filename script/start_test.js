@@ -1,19 +1,21 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-    const testbutton = document.getElementById("start-test",);
+    const testbutton = document.getElementById("start-test");
     const test = document.getElementById("test");
     const timeElement = document.getElementById("time");
     const modal = document.getElementById("testFinished");
-    testbutton.addEventListener("click", function (){
-        testbutton.style.display = "block";
-        this.remove();
+    if (testbutton != null) {
+        testbutton.addEventListener("click", function () {
+            testbutton.style.display = "block";
+            this.remove();
 
 
-        fetchTest(test);
-        testContinue(timeElement);
-    });
+            fetchTest(test);
+            testContinue(timeElement);
+        });
+    }
 });
 
-function testContinue(element){
+function testContinue(element) {
     let url = "api/continueTestApi.php";
     let request = new Request(url, {
         method: 'GET',
@@ -27,10 +29,9 @@ function testContinue(element){
         .then((data) => {
             if (!data.error) {
                 //console.log(data.testStarted);
-                if(data.testStarted) {
+                if (data.testStarted) {
                     fetchUpdatedTime(element);
-                }
-                else fetchTime(element);
+                } else fetchTime(element);
             } else {
                 //console.log("error");
                 $('#testFinished').modal('toggle');

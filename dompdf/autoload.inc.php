@@ -23,8 +23,9 @@ spl_autoload_register(function ($class) {
     }
     return false;
 });
-/*
+
 // php-font-lib
+/*
 require_once __DIR__ . '/lib/php-font-lib/src/FontLib/Autoloader.php';
 
 //php-svg-lib

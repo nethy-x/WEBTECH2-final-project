@@ -62,7 +62,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link  active" aria-current="page" href="teacher_reports.php">
-                            Reports
+                            Rozdelenie úloh
                         </a>
                     </li>
                 </ul>
@@ -109,7 +109,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                         <td>&#10060;</td>
                         <td>&#10060;</td>
                         <td>&#10003;</td>
-                        <td>&#10060;</td>
+                        <td>&#10003;</td>
                         <td>&#10060;</td>
                         <td>&#10060;</td>
                         <td>&#10003;</td>
@@ -143,7 +143,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                         <td>&#10003;</td>
                         <td>&#10060;</td>
                         <td>&#10060;</td>
-                        <td>&#10060;</td>
+                        <td>&#10003;</td>
                         <td>&#10060;</td>
                         <td>&#10060;</td>
                         <td>&#10003;</td>
@@ -158,10 +158,10 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                         <td>&#10060;</td>
                         <td>&#10060;</td>
                         <td>&#10003;</td>
+                        <td>&#10003;</td>
                         <td>&#10060;</td>
                         <td>&#10060;</td>
-                        <td>&#10060;</td>
-                        <td>&#10060;</td>
+                        <td>&#10003;</td>
                         <td>&#10060;</td>
                         <td>&#10003;</td>
                     </tr>

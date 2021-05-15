@@ -2,10 +2,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const testbutton = document.getElementById("start-test");
     const test = document.getElementById("test");
     const timeElement = document.getElementById("time");
-    const modal = document.getElementById("testFinished");
+    const logoutNsubmit = document.getElementById("logNsubmit");
     if (testbutton != null) {
         testbutton.addEventListener("click", function () {
             testbutton.style.display = "block";
+            logoutNsubmit.style.display = "block";
             this.remove();
 
 

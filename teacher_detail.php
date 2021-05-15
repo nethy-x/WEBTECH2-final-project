@@ -65,7 +65,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="teacher_reports.php">
-                            Reports
+                            Rozdelenie úloh
                         </a>
                     </li>
                 </ul>
@@ -123,7 +123,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                             "<a href='test_detail.php?code=" . $test['code'] . "'><button class='btn btn-dark'>Detail</button></a>" .
                             "</td>" .
                             "<td>" .
-                            "<a href='#'><button class='btn btn-dark'>Export testu</button></a>" .
+                            "<a href='#''><button class='btn btn-dark'>Export testu</button></a>" .
                             "</td>" .
                             "<td>" .
                             "<a href='csvExport.php?id=" . $test['id'] ."'><button class='btn btn-dark'>Export hodnotenia</button></a>" .

@@ -61,7 +61,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="teacher_reports.php">
-                            Reports
+                            Rozdelenie úloh
                         </a>
                     </li>
                 </ul>
@@ -74,7 +74,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
             </div>
             <div>
                 <label for="create-test"></label>
-                <input type="button" id="create-test" class="btn btn-primary" value="create new test">
+                <input type="button" id="create-test" class="btn btn-primary" value="Vytvoriť test">
             </div>
             <div id="target" style="display: none">
                 <form>

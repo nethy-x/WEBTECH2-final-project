@@ -62,7 +62,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link  active" aria-current="page" href="teacher_reports.php">
-                            Reports
+                            Rozdelenie úloh
                         </a>
                     </li>
                 </ul>
@@ -72,8 +72,203 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Zoznam ALT+TABerov</h1>
+                <h1 class="h2">Rozdelenie úloh</h1>
             </div>
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">AIS ID</th>
+                        <th scope="col">Meno a Priezvisko</th>
+                        <th scope="col">Prihlasovanie do aplikácie</th>
+                        <th scope="col">Realizácia otázok s viacerými odpoveďami</th>
+                        <th scope="col">Realizácia otázok s krátkymi odpoveďami</th>
+                        <th scope="col">Realizácia párovacích otázok</th>
+                        <th scope="col">Realizácia otázok s kreslením</th>
+                        <th scope="col">Realizácia otázok s príkladom</th>
+                        <th scope="col">Ukončenie testu</th>
+                        <th scope="col">Viac testov aktivácia/deaktivácia</th>
+                        <th scope="col">Info pre učiteľa (notifikácie, ukončenie)</th>
+                        <th scope="col">PDF export</th>
+                        <th scope="col">CSV export</th>
+                        <th scope="col">Docker</th>
+                        <th scope="col">Finalizácia</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>97743</td>
+                        <td>Juraj Budai</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>97855</td>
+                        <td>Juraj Lapčák</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>97947</td>
+                        <td>Ľubomír Ševčík</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>97817</td>
+                        <td>Marek Kačmár</td>
+                        <td>&#10003;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                        <td>&#10003;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                        <td>&#10060;</td>
+                        <td>&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>86213</td>
+                        <td>Martin Kuchár</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                        <td>&#10060;</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="pt-3 pb-2 mb-3 border-bottom">
+                <div class="mb-4">
+                    <h4 class="mb-2">Prihlasovanie do aplikácie</h4>
+                    <article class="mb-2">Realizácia pomocou POST metódy. Na ukladanie do databázy bol použitý algoritmus bcrypt </article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">Realizácia otázok s viacerými odpoveďami</h4>
+                    <article class="mb-2">
+                        Dynamicky generujeme počet otázok v javascripte. Každá otázka môže mať 8
+                        správnych odpovedí, ktorých počet získavame selectom. Zo znenia otázky a odpovedí generujeme
+                        JSON, ktorý ukladáme do JSONU s typom otázky 1, ktorý reprezentuje celý test.
+                    </article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">Realizácia otázok s krátkymi odpoveďami</h4>
+                    <article class="mb-2">
+                        Dynamicky generujeme počet otázok v javascripte. Každá otázka môže mať 8
+                        správnych odpovedí, ktorých počet získavame selectom. Správne odpovede je možné označiť rádiobuttonom.
+                        Zo znenia otázky, správnych a nesprávnych odpovedí generujeme JSON s typom otázky 2, ktorý ukladáme do JSONU, ktorý reprezentuje celý test.
+                    </article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">Realizácia párovacích otázok</h4>
+                    <article class="mb-2">
+                        Dynamicky generujeme počet otázok v javascripte. Každá otázka môže mať 8
+                        párov otázok, ktorých počet získavame selectom.
+                        Zo znenia otázky a párov odpovedí generujeme JSON s typom otázky 3, ktorý ukladáme do JSONU, ktorý reprezentuje celý test.
+                        Na strane študenta je párovanie realizovane pomocou JQUERY UI - sortable.
+                    </article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">Realizácia otázok s kreslením</h4>
+                    <article class="mb-2">Nemáme</article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">Realizácia otázok s príkladom</h4>
+                    <article class="mb-2">
+                        Dynamicky generujeme počet otázok v javascripte. Každá otázka pozostáva z otázky a príkladu.
+                        Zadávanie príkladu realizujeme pomocou knižnice MathLive a Cortex JS.
+                        Zo znenia otázky a zadania príkladu generujeme JSON s typom otázky 5, ktorý ukladáme do JSONU, ktorý reprezentuje celý test.
+                    </article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">Ukončenie testu</h4>
+                    <article class="mb-2">
+                        Každý test ma definovanú časomieru, ktorá sa zadáva pri vytváraní testov.
+
+                    </article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">Viac testov aktivácia/deaktivácia</h4>
+                    <article class="mb-2">Káždý test má v tabuľke tests stĺpec status, ktorý vyjadruje,
+                        či je active alebo inactive. Jeho zmenu možno uskutočniť v podstránke s detailom testov.</article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">Info pre učiteľa (notifikácie, ukončenie)</h4>
+                    <article class="mb-2">
+                        Informácie o monitorovaní ALT+Tab študenta získavame pomocou Page-visibility API. Informácie o tom,
+                        ktorý študent opustil stránku počas testu sa odošle pomocou fetch requestu na PHP, v ktorom mu v databáze do tabuľky pridáme hodnotu odišiel.
+                        Notifikácie realizujeme pomocou GET requestu na tieto údaje v databáze každých pár sekúnd a zapisujeme do Bootstrap elementu toast.
+                        Ak sa notifikácia pošle do tabuľky v databáze sa zapíše údaj o tom, že notifikácia bola poslaná.
+                        Ukončenie je realizované pomocou zapísania timestampu do tabuľky v databáze.
+                        Ukončenie, začatie a trackovanie je možné sledovať v detaile študenta pre daný test.
+                    </article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">PDF export</h4>
+                    <article class="mb-2">Stručný popis realizácie</article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">CSV export</h4>
+                    <article class="mb-2">Stručný popis realizácie</article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">Docker</h4>
+                    <article class="mb-2">Stručný popis realizácie</article>
+                </div>
+                <div class="mb-4">
+                    <h4 class="mb-2">Finalizácia</h4>
+                    <article class="mb-2">Stručný popis realizácie</article>
+                </div>
+            </div>
+
             <?php include("partials/notification-html.php")?>
         </main>
     </div>

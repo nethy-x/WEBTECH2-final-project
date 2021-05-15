@@ -63,7 +63,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="teacher_reports.php">
-                            Reports
+                            Rozdelenie úloh
                         </a>
                     </li>
                 </ul>

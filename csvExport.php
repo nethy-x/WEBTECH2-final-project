@@ -15,7 +15,7 @@ if (isset($_GET["id"])) {
 }
 $code = $testController->getCodeById($id);
 $delimiter = ",";
-$filename = "hodnotenia_" . $code . ".csv";
+$filename = "hodnotenie_" . $code . ".csv";
 
 //create a file pointer
 $f = fopen('php://memory', 'w');
@@ -27,7 +27,7 @@ fputcsv($f, $fields, $delimiter);
 //output each row of the data, format line as csv and write to file pointer
 foreach ($tests as $test) {
     $student = $studentController->getNameById($test["student_id"]);
-    $lineData = array($test["student_id"], $student['name'], $student['surname'], 0);
+    $lineData = array($test["student_id"], $student['name'], $student['surname'], $test["evaluation_sum"]);
     fputcsv($f, $lineData, $delimiter);
 }
 

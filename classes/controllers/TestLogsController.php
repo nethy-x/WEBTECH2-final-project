@@ -20,6 +20,16 @@ class TestLogsController
         $result = $stm->fetch();
         return ($result == false ? false : $result["tracker"]);
     }
+    public function getTestByStudentTestId($student_id,$test_id)
+    {
+        $stm = $this->conn->prepare("SELECT test_json FROM test_logs WHERE student_id=:student_id AND test_id=:test_id");
+
+        $stm->bindParam(":student_id", $student_id);
+        $stm->bindParam(":test_id", $test_id);
+        $stm->execute();
+        $result = $stm->fetch();
+        return ($result == false ? false : $result["test_json"]);
+    }
 
     public function getTimeByStudentTestId($student_id, $test_id) {
         $stm = $this->conn->prepare("SELECT start, finish FROM test_logs WHERE test_id=:test_id AND student_id=:student_id");

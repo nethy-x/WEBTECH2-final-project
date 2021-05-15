@@ -23,7 +23,6 @@ if (isset($data) && isset($data->test) && isset($_SESSION["username"])) {
     $time_limit = $data->test->time_limit;
     unset($data->test->time_limit);
 
-
     $test_id = $testController->insertTest($professor_id, $test_code, $test_json, $time_limit, "inactive");
     if($test_id == false){
         $response = array("error" => true, "message" => "Chyba počas vytvárania testu");

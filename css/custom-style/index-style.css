@@ -1,0 +1,25 @@
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.page_link {
+    padding: 15px 25px;
+    margin: 30px;
+}
+
+.page_link:link, .page_link:visited {
+    background-color: rgb(238, 234, 234);
+}
+
+.page_link:hover,  .page_link:active {
+    background-color: rgb(77, 77, 77);
+    color: white;
+}
+
+.reglog {
+    color: yellow; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.reglog:hover {
+    color: rgb(117, 211, 40); text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}

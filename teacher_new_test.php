@@ -1,9 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
-    $id =  $_SESSION["id"];
-    $email =  $_SESSION["username"];
-}else{
+if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+    $email = $_SESSION["username"];
+} else {
     header("Location: index.php?role=professor");
     die();
 }
@@ -55,11 +55,6 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Export
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="teacher_reports.php">
                             Rozdelenie úloh
                         </a>
@@ -107,44 +102,32 @@ if(isset($_SESSION["username"]) && isset($_SESSION["id"])){
                         <?php include "otazka/question_4.php" ?>
                         <hr>
                     </div>
-                    <!--                    <div>-->
-                    <!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question4">-->
-                    <!--                    </div>-->
+
                     <div class="mt-3" id="question5-container">
                         <h2>Matematická otázka</h2>
                         <?php include "otazka/question_5.php" ?>
                         <hr>
                     </div>
 
-<!--                    <div>-->
-<!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question5">-->
-<!--                    </div>-->
-
-
-
                     <div>
                         <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question5">
                     </div>
 
-                    <!--                    <div>-->
-                    <!--                        <input class="btn btn-dark mt-1 mb-1" type="button" value="Ďalšia otázka" id="new-question5">-->
-                    <!--                    </div>-->
-
                     <div class="mt-3">
                         <h2>Časomiera</h2>
-                        <?php include "partials/time_limit.php"?>
+                        <?php include "partials/time_limit.php" ?>
                         <hr>
                     </div>
-					
+
                     <div>
                         <input class="btn btn-dark" type="button" value="Submit" id="Submit-Test">
                     </div>
                 </form>
             </div>
-                <div class="mt-4">
-                    <h5 id="fetch-response" style="color: #212529"> </h5>
-                </div>
-            <?php include("partials/notification-html.php")?>
+            <div class="mt-4">
+                <h5 id="fetch-response" style="color: #212529"></h5>
+            </div>
+            <?php include("partials/notification-html.php") ?>
         </main>
     </div>
 </div>

@@ -79,11 +79,6 @@ if ($student_name == false) {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Export
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="teacher_reports.php">
                             Rozdelenie úloh
                         </a>

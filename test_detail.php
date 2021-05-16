@@ -78,11 +78,6 @@ $studentController = new StudentController();
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Export
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="teacher_reports.php">
                             Rozdelenie úloh
                         </a>
@@ -110,7 +105,7 @@ $studentController = new StudentController();
                         <th scope="col">Priezvisko</th>
                         <th scope="col">start</th>
                         <th scope="col">finish</th>
-                        <th scope="col">tracker</th>
+                        <th scope="col">ALT+TAB tracker</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>

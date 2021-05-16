@@ -56,11 +56,6 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Export
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link  active" aria-current="page" href="teacher_reports.php">
                             Rozdelenie úloh
                         </a>
@@ -231,7 +226,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                 <div class="mb-4">
                     <h4 class="mb-2">Ukončenie testu</h4>
                     <article class="mb-2">
-                        Každý test ma definovanú časomieru, ktorá sa zadáva pri vytváraní testov. Výpočet časomiery je realizovaný vypočítaním rozdielu časov 
+                        Každý test ma definovanú časomieru, ktorá sa zadáva pri vytváraní testov. Výpočet časomiery je realizovaný vypočítaním rozdielu časov
                         predpokladaného ukončenia a začatia testu, ktorý sa pri každom kliknutí tlačidla
                         na spustenie testu aktualizuje, čím sa následne upraví časomiera.
                 </div>
@@ -258,9 +253,9 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
                 <div class="mb-4">
                     <h4 class="mb-2">CSV export</h4>
                     <article class="mb-2">
-                    Export do CSV súboru je realizovaný získaním všetkých odovzdaných ohodnotených testov s daným id testu
-                    a následným vytvorením 4 stĺpcov(id, meno, priezvisko, hodnotenia), do ktorých sa v cykle zapisujú hodnoty uložené v databáze. Následne sa určí
-                    hlavička, ktorou sa nastaví kódovanie, typ súboru a nastavenie uloženia vytvoreného súboru namiesto zobrazenia.
+                        Export do CSV súboru je realizovaný získaním všetkých odovzdaných ohodnotených testov s daným id testu
+                        a následným vytvorením 4 stĺpcov(id, meno, priezvisko, hodnotenia), do ktorých sa v cykle zapisujú hodnoty uložené v databáze. Následne sa určí
+                        hlavička, ktorou sa nastaví kódovanie, typ súboru a nastavenie uloženia vytvoreného súboru namiesto zobrazenia.
                     </article>
                 </div>
                 <div class="mb-4">

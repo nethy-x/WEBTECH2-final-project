@@ -61,55 +61,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="row mb-2">
                                 <h3>Prosím, vyplňte tento formulár na dokončenie registrácie.</h3>
                             </div>
+                            <hr>
                             <div class="row mb-2">
                                 <div class="form-group col">
-                                    <label for="name"><b>Meno</b></label>
+                                    <label for="name" class="col-form-label"><b>Meno</b></label>
                                 </div>
-                                <div class="form-group col">
-                                    <input type="text" placeholder="Vložte meno" name="name" id="name" required>
+                                <div class="form-group col-lg-7">
+                                    <input class="form-control" type="text" placeholder="Vložte meno" name="name" id="name" required>
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="form-group col">
-                                    <label for="surname"><b>Priezvisko</b></label>
+                                    <label for="surname" class="col-form-label"><b>Priezvisko</b></label>
                                 </div>
-                                <div class="form-group col">
-                                    <input type="text" placeholder="Vložte priezvisko" name="surname" id="surname"
+                                <div class="form-group  col-lg-7">
+                                    <input class="form-control" type="text" placeholder="Vložte priezvisko" name="surname" id="surname"
                                            required>
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="form-group col">
-                                    <label for="email"><b>Email</b></label>
+                                    <label for="email" class="col-form-label"><b>Email</b></label>
                                 </div>
-                                <div class="form-group col">
-                                    <input type="email" placeholder="Vložte email" name="email" id="email" required>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="form-group col">
-                                    <label for="psw"><b>Heslo</b></label>
-                                </div>
-                                <div class="form-group col">
-                                    <input type="password" placeholder="Vložte heslo" name="psw" id="psw" required>
+                                <div class="form-group  col-lg-7">
+                                    <input class="form-control" type="email" placeholder="Vložte email" name="email" id="email" required>
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="form-group col">
-                                    <label for="psw-repeat"><b>Heslo znova</b></label>
+                                    <label for="psw" class="col-form-label"><b>Heslo</b></label>
                                 </div>
+                                <div class="form-group  col-lg-7">
+                                    <input class="form-control" type="password" placeholder="Vložte heslo" name="psw" id="psw" required>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
                                 <div class="form-group col">
-                                    <input type="password" placeholder="Vložte znova heslo" name="psw-repeat"
+                                    <label for="psw-repeat" class="col-form-label"><b>Heslo znova</b></label>
+                                </div>
+                                <div class="form-group  col-lg-7">
+                                    <input class="form-control" type="password" placeholder="Vložte znova heslo" name="psw-repeat"
                                            id="psw-repeat"
                                            required>
                                 </div>
                             </div>
+                            <hr>
                             <div class="row mb-2">
-                                <button type="submit" class="btn btn-secondary mt-3" id="rgstr">Registrovať</button>
+                                <button type="submit" class="btn btn-secondary mt-5" id="rgstr">Registrovať</button>
                             </div>
                         </div>
+                        <div class="row mx-auto" style="width: 300px">
+                            <p>Máte už vytvorený účet? <a href="index.php" class="register reglog">Prihlásenie</a></p>
+                        </div>
                     </form>
-                    <p>Máte už vytvorený účet? <a href="index.php" class="register">Prihlásenie</a></p>
+
                 </div>
             </div>
         </main>

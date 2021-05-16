@@ -2,7 +2,7 @@
     <div class="row mb-2">
         <div class=" d-flex justify-content-center">
             <div class="p-2"><a href="index.php" class="page_link">Študent</a></div>
-            <div class="p-2"><a href="index.php?role=professor" class="page_link" style="color: yellow; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Učiteľ</a></div>
+            <div class="p-2"><a href="index.php?role=professor" class="page_link" style="color: yellow; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; background-color: grey;">Učiteľ</a></div>
         </div>
     </div>
     <div class="container mt-5">

@@ -103,8 +103,8 @@ $studentController = new StudentController();
                     <tr>
                         <th scope="col">Meno</th>
                         <th scope="col">Priezvisko</th>
-                        <th scope="col">start</th>
-                        <th scope="col">finish</th>
+                        <th scope="col">Štart testu</th>
+                        <th scope="col">Predpokladaný finish</th>
                         <th scope="col">ALT+TAB tracker</th>
                         <th scope="col"></th>
                     </tr>

@@ -183,6 +183,34 @@ if (isset($_SESSION["username"]) && isset($_SESSION["id"])) {
             </div>
             <div class="pt-3 pb-2 mb-3 border-bottom">
                 <div class="mb-4">
+                    <h4 class="mb-2">Dodatočná inštalácia</h4>
+                    <article class="mb-2">
+                        <p>Bol updatovaný docker.</p>
+                        <p>V súbore /etc/apache2/sites-available/000-default-le-ssl.conf dopísané riadky:
+                            <br>
+                            <code>
+                                ProxyPreserveHost on<br>
+
+                                ProxyPass /finale-docker/ http://127.0.0.1:8000/<br>
+                                ProxyPassReverse /docker/ http://127.0.0.1:8000/<br>
+
+                                ProxyPass /finale-phpmyadmin/ http://127.0.0.1:8080/<br>
+                                ProxyPassReverse /finale-phpmyadmin/ http://127.0.0.1:8080/<br>
+                            </code>
+                        </p>
+                        <p>
+                            A vykonané následné príkazy nasledujúce reštartom apache:
+                            <br>
+                            <code>
+                                sudo a2enmod proxy<br>
+
+                                sudo a2enmod proxy_http<br>
+                            </code>
+                        </p>
+                    </article>
+                </div>
+                <hr>
+                <div class="mb-4">
                     <h4 class="mb-2">Prihlasovanie do aplikácie</h4>
                     <article class="mb-2">Realizácia pomocou POST metódy. Na ukladanie do databázy bol použitý algoritmus bcrypt </article>
                 </div>
